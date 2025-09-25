@@ -1,0 +1,1662 @@
+[
+  {
+    "id": "1",
+    "name": "CeraVe Daily Night Cream",
+    "description": "Clinically tested night cream that delivers long-lasting nourishing for healthier-looking skin.",
+    "price": 250,
+    "originalPrice": 329,
+    "discount": 24,
+    "category": "Skincare",
+    "subcategory": "Night Cream",
+    "brand": "CeraVe",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 63,
+    "rating": 4.1,
+    "reviewCount": 507,
+    "tags": [
+      "skincare",
+      "night cream",
+      "cerave",
+      "acne-treatment",
+      "blemish-control"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:35:58.585Z"
+  },
+  {
+    "id": "2",
+    "name": "Olay Professional Night Cream",
+    "description": "Clinically tested night cream that delivers long-lasting nourishing for healthier-looking skin.",
+    "price": 236,
+    "category": "Skincare",
+    "subcategory": "Night Cream",
+    "brand": "Olay",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 60,
+    "rating": 4.6,
+    "reviewCount": 322,
+    "tags": [
+      "skincare",
+      "night cream",
+      "olay",
+      "sensitive-skin",
+      "gentle"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "3",
+    "name": "L'Oreal Paris Eye Cream for Oily Skin",
+    "description": "Gentle yet effective eye cream suitable for daily use with proven nourishing properties.",
+    "price": 279,
+    "category": "Skincare",
+    "subcategory": "Eye Cream",
+    "brand": "L'Oreal Paris",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 18,
+    "rating": 4.6,
+    "reviewCount": 60,
+    "tags": [
+      "skincare",
+      "eye cream",
+      "l'oreal paris",
+      "hydrating",
+      "moisturizing"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "4",
+    "name": "Paula's Choice Cleanser for Oily Skin",
+    "description": "Professional-grade cleanser that provides nourishing while maintaining skin health.",
+    "price": 355,
+    "category": "Skincare",
+    "subcategory": "Cleanser",
+    "brand": "Paula's Choice",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 76,
+    "rating": 3.6,
+    "reviewCount": 390,
+    "tags": [
+      "skincare",
+      "cleanser",
+      "paula's choice",
+      "anti-aging",
+      "wrinkle-care"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "5",
+    "name": "Olay Daily Serum",
+    "description": "Professional-grade serum that provides hydrating while maintaining skin health.",
+    "price": 230,
+    "category": "Skincare",
+    "subcategory": "Serum",
+    "brand": "Olay",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 13,
+    "rating": 3.9,
+    "reviewCount": 172,
+    "tags": [
+      "skincare",
+      "serum",
+      "olay",
+      "acne-treatment",
+      "blemish-control"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "6",
+    "name": "La Roche-Posay Brightening Toner",
+    "description": "Clinically tested toner that delivers long-lasting smoothing for healthier-looking skin.",
+    "price": 281,
+    "originalPrice": 302,
+    "discount": 7,
+    "category": "Skincare",
+    "subcategory": "Toner",
+    "brand": "La Roche-Posay",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 93,
+    "rating": 3.7,
+    "reviewCount": 148,
+    "tags": [
+      "skincare",
+      "toner",
+      "la roche-posay",
+      "anti-aging",
+      "wrinkle-care"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "7",
+    "name": "Paula's Choice Moisturizer for Normal Skin",
+    "description": "Gentle yet effective moisturizer suitable for daily use with proven hydrating properties.",
+    "price": 245,
+    "category": "Skincare",
+    "subcategory": "Moisturizer",
+    "brand": "Paula's Choice",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 67,
+    "rating": 3.8,
+    "reviewCount": 313,
+    "tags": [
+      "skincare",
+      "moisturizer",
+      "paula's choice",
+      "hydrating",
+      "moisturizing"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "8",
+    "name": "Neutrogena Professional Face Wash",
+    "description": "A premium face wash formulated for combination skin with advanced ingredients for visible results.",
+    "price": 343,
+    "category": "Skincare",
+    "subcategory": "Face Wash",
+    "brand": "Neutrogena",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 37,
+    "rating": 4.3,
+    "reviewCount": 540,
+    "tags": [
+      "skincare",
+      "face wash",
+      "neutrogena",
+      "hydrating",
+      "moisturizing"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "9",
+    "name": "L'Oreal Paris Serum for Oily Skin",
+    "description": "Clinically tested serum that delivers long-lasting brightening for healthier-looking skin.",
+    "price": 276,
+    "category": "Skincare",
+    "subcategory": "Serum",
+    "brand": "L'Oreal Paris",
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 34,
+    "rating": 4.9,
+    "reviewCount": 133,
+    "tags": [
+      "skincare",
+      "serum",
+      "l'oreal paris",
+      "sensitive-skin",
+      "gentle"
+    ],
+    "createdAt": "2025-09-23T06:31:59.851Z",
+    "updatedAt": "2025-09-23T06:31:59.851Z"
+  },
+  {
+    "id": "10",
+    "name": "Charlotte Tilbury Daily Sunscreen",
+    "description": "Professional-grade sunscreen that provides anti-aging while maintaining skin health.",
+    "price": 305,
+    "category": "Skincare",
+    "subcategory": "Sunscreen",
+    "brand": "Charlotte Tilbury",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 106,
+    "rating": 4,
+    "reviewCount": 372,
+    "tags": [
+      "skincare",
+      "sunscreen",
+      "charlotte tilbury",
+      "hydrating",
+      "moisturizing"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "11",
+    "name": "Lakme Advanced Face Wash",
+    "description": "Professional-grade face wash that provides rejuvenating while maintaining skin health.",
+    "price": 382,
+    "category": "Skincare",
+    "subcategory": "Face Wash",
+    "brand": "Lakme",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 71,
+    "rating": 3.9,
+    "reviewCount": 484,
+    "tags": [
+      "skincare",
+      "face wash",
+      "lakme",
+      "acne-treatment",
+      "blemish-control"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "12",
+    "name": "Olay Daily Moisturizer",
+    "description": "Clinically tested moisturizer that delivers long-lasting anti-aging for healthier-looking skin.",
+    "price": 250,
+    "originalPrice": 329,
+    "discount": 24,
+    "category": "Skincare",
+    "subcategory": "Moisturizer",
+    "brand": "Olay",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 30,
+    "rating": 3.7,
+    "reviewCount": 535,
+    "tags": [
+      "skincare",
+      "moisturizer",
+      "olay",
+      "sensitive-skin",
+      "gentle"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "13",
+    "name": "Benefit Professional Highlighter",
+    "description": "Long-wearing highlighter that provides intense color payoff with comfortable wear.",
+    "price": 571,
+    "category": "Makeup",
+    "subcategory": "Highlighter",
+    "brand": "Benefit",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 64,
+    "rating": 5,
+    "reviewCount": 332,
+    "tags": [
+      "makeup",
+      "highlighter",
+      "benefit",
+      "professional",
+      "high-pigment"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "14",
+    "name": "Tarte Long-Lasting Concealer",
+    "description": "Professional quality concealer perfect for creating stunning looks with buildable coverage.",
+    "price": 724,
+    "category": "Makeup",
+    "subcategory": "Concealer",
+    "brand": "Tarte",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 52,
+    "rating": 4.1,
+    "reviewCount": 323,
+    "tags": [
+      "makeup",
+      "concealer",
+      "tarte",
+      "matte",
+      "full-coverage"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "15",
+    "name": "NARS Professional Primer",
+    "description": "Long-wearing primer that provides intense color payoff with comfortable wear.",
+    "price": 536,
+    "category": "Makeup",
+    "subcategory": "Primer",
+    "brand": "NARS",
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 102,
+    "rating": 4.5,
+    "reviewCount": 518,
+    "tags": [
+      "makeup",
+      "primer",
+      "nars",
+      "long-lasting",
+      "waterproof"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "16",
+    "name": "Too Faced Matte Lipstick",
+    "description": "Professional quality lipstick perfect for creating stunning looks with buildable coverage.",
+    "price": 577,
+    "category": "Makeup",
+    "subcategory": "Lipstick",
+    "brand": "Too Faced",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 60,
+    "rating": 4.7,
+    "reviewCount": 460,
+    "tags": [
+      "makeup",
+      "lipstick",
+      "too faced",
+      "matte",
+      "full-coverage"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "17",
+    "name": "Too Faced Foundation - Brown",
+    "description": "Long-wearing foundation that provides intense color payoff with comfortable wear.",
+    "price": 565,
+    "category": "Makeup",
+    "subcategory": "Foundation",
+    "brand": "Too Faced",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 18,
+    "rating": 4.6,
+    "reviewCount": 365,
+    "tags": [
+      "makeup",
+      "foundation",
+      "too faced",
+      "long-lasting",
+      "waterproof"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "18",
+    "name": "Benefit Natural Lipstick",
+    "description": "Premium lipstick formulated with skin-loving ingredients for flawless application.",
+    "price": 541,
+    "category": "Makeup",
+    "subcategory": "Lipstick",
+    "brand": "Benefit",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 27,
+    "rating": 4.6,
+    "reviewCount": 538,
+    "tags": [
+      "makeup",
+      "lipstick",
+      "benefit",
+      "professional",
+      "high-pigment"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "19",
+    "name": "Tarte Long-Lasting Primer",
+    "description": "High-pigment primer with natural finish that lasts all day without fading.",
+    "price": 562,
+    "originalPrice": 677,
+    "discount": 17,
+    "category": "Makeup",
+    "subcategory": "Primer",
+    "brand": "Tarte",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 20,
+    "rating": 3.8,
+    "reviewCount": 465,
+    "tags": [
+      "makeup",
+      "primer",
+      "tarte",
+      "matte",
+      "full-coverage"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "20",
+    "name": "Fenty Beauty Long-Lasting Blush",
+    "description": "Long-wearing blush that provides intense color payoff with comfortable wear.",
+    "price": 694,
+    "category": "Makeup",
+    "subcategory": "Blush",
+    "brand": "Fenty Beauty",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 64,
+    "rating": 3.5,
+    "reviewCount": 517,
+    "tags": [
+      "makeup",
+      "blush",
+      "fenty beauty",
+      "matte",
+      "full-coverage"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "21",
+    "name": "Maybelline Professional Primer",
+    "description": "Long-wearing primer that provides intense color payoff with comfortable wear.",
+    "price": 516,
+    "category": "Makeup",
+    "subcategory": "Primer",
+    "brand": "Maybelline",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 99,
+    "rating": 3.6,
+    "reviewCount": 142,
+    "tags": [
+      "makeup",
+      "primer",
+      "maybelline",
+      "cruelty-free",
+      "vegan"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "22",
+    "name": "Benefit Long-Lasting Primer",
+    "description": "High-pigment primer with natural finish that lasts all day without fading.",
+    "price": 642,
+    "category": "Makeup",
+    "subcategory": "Primer",
+    "brand": "Benefit",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 18,
+    "rating": 3.9,
+    "reviewCount": 250,
+    "tags": [
+      "makeup",
+      "primer",
+      "benefit",
+      "natural",
+      "everyday"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "23",
+    "name": "Huda Beauty Blush - Brown",
+    "description": "Professional quality blush perfect for creating stunning looks with buildable coverage.",
+    "price": 552,
+    "category": "Makeup",
+    "subcategory": "Blush",
+    "brand": "Huda Beauty",
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 93,
+    "rating": 5,
+    "reviewCount": 320,
+    "tags": [
+      "makeup",
+      "blush",
+      "huda beauty",
+      "matte",
+      "full-coverage"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "24",
+    "name": "Maybelline Eyeshadow - Coral",
+    "description": "Professional quality eyeshadow perfect for creating stunning looks with buildable coverage.",
+    "price": 726,
+    "category": "Makeup",
+    "subcategory": "Eyeshadow",
+    "brand": "Maybelline",
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400",
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 93,
+    "rating": 3.6,
+    "reviewCount": 431,
+    "tags": [
+      "makeup",
+      "eyeshadow",
+      "maybelline",
+      "natural",
+      "everyday"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "25",
+    "name": "Schwarzkopf Repair & Smoothing Shampoo",
+    "description": "Professional salon-quality shampoo that transforms your hair with visible results.",
+    "price": 251,
+    "category": "Hair Care",
+    "subcategory": "Shampoo",
+    "brand": "Schwarzkopf",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 16,
+    "rating": 4.5,
+    "reviewCount": 95,
+    "tags": [
+      "hair care",
+      "shampoo",
+      "schwarzkopf",
+      "repair",
+      "damaged-hair"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "26",
+    "name": "Tresemme Repair & Hydrating Leave-in Treatment",
+    "description": "Nourishing leave-in treatment specially formulated for straight hair with brightening properties.",
+    "price": 340,
+    "category": "Hair Care",
+    "subcategory": "Leave-in Treatment",
+    "brand": "Tresemme",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 59,
+    "rating": 5,
+    "reviewCount": 147,
+    "tags": [
+      "hair care",
+      "leave-in treatment",
+      "tresemme",
+      "salon-quality",
+      "professional"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "27",
+    "name": "Mamaearth Anti-Aging Hair Oil",
+    "description": "Nourishing hair oil specially formulated for curly hair with smoothing properties.",
+    "price": 270,
+    "category": "Hair Care",
+    "subcategory": "Hair Oil",
+    "brand": "Mamaearth",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 54,
+    "rating": 4.5,
+    "reviewCount": 400,
+    "tags": [
+      "hair care",
+      "hair oil",
+      "mamaearth",
+      "volume",
+      "thickening"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "28",
+    "name": "Schwarzkopf Professional Hair Oil",
+    "description": "Gentle hair oil enriched with natural ingredients for healthy, beautiful hair.",
+    "price": 349,
+    "category": "Hair Care",
+    "subcategory": "Hair Oil",
+    "brand": "Schwarzkopf",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 56,
+    "rating": 4.9,
+    "reviewCount": 435,
+    "tags": [
+      "hair care",
+      "hair oil",
+      "schwarzkopf",
+      "salon-quality",
+      "professional"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "29",
+    "name": "Matrix Natural Treatment",
+    "description": "Gentle treatment enriched with natural ingredients for healthy, beautiful hair.",
+    "price": 436,
+    "category": "Hair Care",
+    "subcategory": "Treatment",
+    "brand": "Matrix",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 64,
+    "rating": 4.4,
+    "reviewCount": 358,
+    "tags": [
+      "hair care",
+      "treatment",
+      "matrix",
+      "salon-quality",
+      "professional"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "30",
+    "name": "WOW Skin Science Natural Conditioner",
+    "description": "Gentle conditioner enriched with natural ingredients for healthy, beautiful hair.",
+    "price": 266,
+    "category": "Hair Care",
+    "subcategory": "Conditioner",
+    "brand": "WOW Skin Science",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 87,
+    "rating": 3.6,
+    "reviewCount": 511,
+    "tags": [
+      "hair care",
+      "conditioner",
+      "wow skin science",
+      "natural",
+      "organic"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "31",
+    "name": "Olaplex Natural Shampoo",
+    "description": "Professional salon-quality shampoo that transforms your hair with visible results.",
+    "price": 291,
+    "category": "Hair Care",
+    "subcategory": "Shampoo",
+    "brand": "Olaplex",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 35,
+    "rating": 3.7,
+    "reviewCount": 104,
+    "tags": [
+      "hair care",
+      "shampoo",
+      "olaplex",
+      "natural",
+      "organic"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "32",
+    "name": "Mamaearth Natural Hair Oil",
+    "description": "Gentle hair oil enriched with natural ingredients for healthy, beautiful hair.",
+    "price": 354,
+    "originalPrice": 389,
+    "discount": 9,
+    "category": "Hair Care",
+    "subcategory": "Hair Oil",
+    "brand": "Mamaearth",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 42,
+    "rating": 3.9,
+    "reviewCount": 92,
+    "tags": [
+      "hair care",
+      "hair oil",
+      "mamaearth",
+      "smooth",
+      "frizz-control"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "33",
+    "name": "Schwarzkopf Professional Styling Gel",
+    "description": "Advanced formula styling gel that repairs and protects hair from damage.",
+    "price": 270,
+    "category": "Hair Care",
+    "subcategory": "Styling Gel",
+    "brand": "Schwarzkopf",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 84,
+    "rating": 4.8,
+    "reviewCount": 236,
+    "tags": [
+      "hair care",
+      "styling gel",
+      "schwarzkopf",
+      "natural",
+      "organic"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "34",
+    "name": "Herbal Essences Rejuvenating Hair Serum",
+    "description": "Advanced formula hair serum that repairs and protects hair from damage.",
+    "price": 313,
+    "category": "Hair Care",
+    "subcategory": "Hair Serum",
+    "brand": "Herbal Essences",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 84,
+    "rating": 4.3,
+    "reviewCount": 209,
+    "tags": [
+      "hair care",
+      "hair serum",
+      "herbal essences",
+      "salon-quality",
+      "professional"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "35",
+    "name": "L'Oreal Professionnel Natural Styling Gel",
+    "description": "Professional salon-quality styling gel that transforms your hair with visible results.",
+    "price": 319,
+    "category": "Hair Care",
+    "subcategory": "Styling Gel",
+    "brand": "L'Oreal Professionnel",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 97,
+    "rating": 3.7,
+    "reviewCount": 322,
+    "tags": [
+      "hair care",
+      "styling gel",
+      "l'oreal professionnel",
+      "salon-quality",
+      "professional"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "36",
+    "name": "Herbal Essences Straight Hair Styling Gel",
+    "description": "Nourishing styling gel specially formulated for dry hair with hydrating properties.",
+    "price": 279,
+    "category": "Hair Care",
+    "subcategory": "Styling Gel",
+    "brand": "Herbal Essences",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 86,
+    "rating": 4.3,
+    "reviewCount": 281,
+    "tags": [
+      "hair care",
+      "styling gel",
+      "herbal essences",
+      "repair",
+      "damaged-hair"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "37",
+    "name": "Paco Rabanne Signature Eau de Toilette",
+    "description": "Luxurious fragrance perfect for all-day wear with excellent sillage and longevity.",
+    "price": 1043,
+    "category": "Fragrance",
+    "subcategory": "Eau de Toilette",
+    "brand": "Paco Rabanne",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 102,
+    "rating": 4.2,
+    "reviewCount": 413,
+    "tags": [
+      "fragrance",
+      "eau de toilette",
+      "paco rabanne"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "38",
+    "name": "Paco Rabanne Signature Gift Set",
+    "description": "A captivating fresh fragrance with long-lasting scent that evolves throughout the day.",
+    "price": 1450,
+    "category": "Fragrance",
+    "subcategory": "Gift Set",
+    "brand": "Paco Rabanne",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 89,
+    "rating": 4.9,
+    "reviewCount": 230,
+    "tags": [
+      "fragrance",
+      "gift set",
+      "paco rabanne"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "39",
+    "name": "Hugo Boss Modern Body Mist",
+    "description": "Signature scent that combines classic and modern notes for a unique olfactory journey.",
+    "price": 1636,
+    "category": "Fragrance",
+    "subcategory": "Body Mist",
+    "brand": "Hugo Boss",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 43,
+    "rating": 4.5,
+    "reviewCount": 119,
+    "tags": [
+      "fragrance",
+      "body mist",
+      "hugo boss"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "40",
+    "name": "Tom Ford Luxury Perfume Oil",
+    "description": "A captivating citrus fragrance with long-lasting scent that evolves throughout the day.",
+    "price": 918,
+    "category": "Fragrance",
+    "subcategory": "Perfume Oil",
+    "brand": "Tom Ford",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 86,
+    "rating": 3.8,
+    "reviewCount": 240,
+    "tags": [
+      "fragrance",
+      "perfume oil",
+      "tom ford"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "41",
+    "name": "Tom Ford Woody Eau de Parfum",
+    "description": "Elegant eau de parfum featuring premium ingredients for a sophisticated scent experience.",
+    "price": 1688,
+    "category": "Fragrance",
+    "subcategory": "Eau de Parfum",
+    "brand": "Tom Ford",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 72,
+    "rating": 4.1,
+    "reviewCount": 334,
+    "tags": [
+      "fragrance",
+      "eau de parfum",
+      "tom ford"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "42",
+    "name": "Burberry Evening Cologne",
+    "description": "A captivating floral fragrance with long-lasting scent that evolves throughout the day.",
+    "price": 998,
+    "category": "Fragrance",
+    "subcategory": "Cologne",
+    "brand": "Burberry",
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 53,
+    "rating": 4.1,
+    "reviewCount": 474,
+    "tags": [
+      "fragrance",
+      "cologne",
+      "burberry"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "43",
+    "name": "Armaf All-Day Gift Set",
+    "description": "Luxurious fragrance perfect for night wear with excellent sillage and longevity.",
+    "price": 1236,
+    "category": "Fragrance",
+    "subcategory": "Gift Set",
+    "brand": "Armaf",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 25,
+    "rating": 4.9,
+    "reviewCount": 311,
+    "tags": [
+      "fragrance",
+      "gift set",
+      "armaf"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "44",
+    "name": "Tom Ford Day Body Mist",
+    "description": "Luxurious fragrance perfect for all-day wear with excellent sillage and longevity.",
+    "price": 1167,
+    "category": "Fragrance",
+    "subcategory": "Body Mist",
+    "brand": "Tom Ford",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 74,
+    "rating": 4.6,
+    "reviewCount": 406,
+    "tags": [
+      "fragrance",
+      "body mist",
+      "tom ford"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "45",
+    "name": "Paco Rabanne Signature Eau de Parfum",
+    "description": "Elegant eau de parfum featuring premium ingredients for a sophisticated scent experience.",
+    "price": 1475,
+    "originalPrice": 2021,
+    "discount": 27,
+    "category": "Fragrance",
+    "subcategory": "Eau de Parfum",
+    "brand": "Paco Rabanne",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 89,
+    "rating": 5,
+    "reviewCount": 89,
+    "tags": [
+      "fragrance",
+      "eau de parfum",
+      "paco rabanne"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "46",
+    "name": "Burberry Premium Travel Size",
+    "description": "A captivating oriental fragrance with long-lasting scent that evolves throughout the day.",
+    "price": 1674,
+    "category": "Fragrance",
+    "subcategory": "Travel Size",
+    "brand": "Burberry",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 27,
+    "rating": 4.1,
+    "reviewCount": 369,
+    "tags": [
+      "fragrance",
+      "travel size",
+      "burberry"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "47",
+    "name": "Chanel Signature Cologne",
+    "description": "A captivating floral fragrance with long-lasting scent that evolves throughout the day.",
+    "price": 1194,
+    "category": "Fragrance",
+    "subcategory": "Cologne",
+    "brand": "Chanel",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 24,
+    "rating": 4,
+    "reviewCount": 120,
+    "tags": [
+      "fragrance",
+      "cologne",
+      "chanel"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "48",
+    "name": "Gucci Premium Gift Set",
+    "description": "Luxurious fragrance perfect for evening wear with excellent sillage and longevity.",
+    "price": 1322,
+    "category": "Fragrance",
+    "subcategory": "Gift Set",
+    "brand": "Gucci",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400",
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 75,
+    "rating": 4,
+    "reviewCount": 491,
+    "tags": [
+      "fragrance",
+      "gift set",
+      "gucci"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "49",
+    "name": "Mamaearth Natural Body Scrub",
+    "description": "Premium body scrub that combines effective cleansing with nourishing care.",
+    "price": 175,
+    "originalPrice": 206,
+    "discount": 15,
+    "category": "Personal Care",
+    "subcategory": "Body Scrub",
+    "brand": "Mamaearth",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 56,
+    "rating": 4.6,
+    "reviewCount": 345,
+    "tags": [
+      "personal care",
+      "body scrub",
+      "mamaearth"
+    ],
+    "createdAt": "2025-09-23T06:31:59.852Z",
+    "updatedAt": "2025-09-23T06:31:59.852Z"
+  },
+  {
+    "id": "50",
+    "name": "Pears Antibacterial Body Lotion",
+    "description": "Premium body lotion that combines effective cleansing with nourishing care.",
+    "price": 108,
+    "category": "Personal Care",
+    "subcategory": "Body Lotion",
+    "brand": "Pears",
+    "image": "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 54,
+    "rating": 4.3,
+    "reviewCount": 54,
+    "tags": [
+      "personal care",
+      "body lotion",
+      "pears"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "51",
+    "name": "Lifebuoy Anti-Aging Toothpaste",
+    "description": "Premium toothpaste that combines effective cleansing with nourishing care.",
+    "price": 154,
+    "originalPrice": 188,
+    "discount": 18,
+    "category": "Personal Care",
+    "subcategory": "Toothpaste",
+    "brand": "Lifebuoy",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 91,
+    "rating": 4.6,
+    "reviewCount": 390,
+    "tags": [
+      "personal care",
+      "toothpaste",
+      "lifebuoy"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "52",
+    "name": "Sensodyne Natural Soap",
+    "description": "Premium soap that combines effective cleansing with nourishing care.",
+    "price": 172,
+    "originalPrice": 185,
+    "discount": 7,
+    "category": "Personal Care",
+    "subcategory": "Soap",
+    "brand": "Sensodyne",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 17,
+    "rating": 4.2,
+    "reviewCount": 502,
+    "tags": [
+      "personal care",
+      "soap",
+      "sensodyne"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "53",
+    "name": "Palmolive Family Body Lotion",
+    "description": "Dermatologically tested body lotion that provides effective care while being gentle on skin.",
+    "price": 166,
+    "originalPrice": 216,
+    "discount": 23,
+    "category": "Personal Care",
+    "subcategory": "Body Lotion",
+    "brand": "Palmolive",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 31,
+    "rating": 3.5,
+    "reviewCount": 270,
+    "tags": [
+      "personal care",
+      "body lotion",
+      "palmolive"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "54",
+    "name": "Pears Antibacterial Deodorant",
+    "description": "Family-friendly deodorant with natural ingredients for safe and effective cleansing.",
+    "price": 128,
+    "originalPrice": 138,
+    "discount": 7,
+    "category": "Personal Care",
+    "subcategory": "Deodorant",
+    "brand": "Pears",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 79,
+    "rating": 3.6,
+    "reviewCount": 96,
+    "tags": [
+      "personal care",
+      "deodorant",
+      "pears"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "55",
+    "name": "Colgate Natural Mouthwash",
+    "description": "Gentle mouthwash suitable for daily use with brightening properties for healthy skin.",
+    "price": 184,
+    "category": "Personal Care",
+    "subcategory": "Mouthwash",
+    "brand": "Colgate",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 33,
+    "rating": 4.4,
+    "reviewCount": 161,
+    "tags": [
+      "personal care",
+      "mouthwash",
+      "colgate"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "56",
+    "name": "Dettol Natural Body Wash",
+    "description": "Gentle body wash suitable for daily use with anti-aging properties for healthy skin.",
+    "price": 181,
+    "originalPrice": 197,
+    "discount": 8,
+    "category": "Personal Care",
+    "subcategory": "Body Wash",
+    "brand": "Dettol",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 31,
+    "rating": 3.7,
+    "reviewCount": 383,
+    "tags": [
+      "personal care",
+      "body wash",
+      "dettol"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "57",
+    "name": "Himalaya Gentle Wet Wipes",
+    "description": "Family-friendly wet wipes with natural ingredients for safe and effective cleansing.",
+    "price": 176,
+    "category": "Personal Care",
+    "subcategory": "Wet Wipes",
+    "brand": "Himalaya",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 106,
+    "rating": 3.6,
+    "reviewCount": 519,
+    "tags": [
+      "personal care",
+      "wet wipes",
+      "himalaya"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "58",
+    "name": "Himalaya Family Sanitizer",
+    "description": "Gentle sanitizer suitable for daily use with anti-aging properties for healthy skin.",
+    "price": 113,
+    "originalPrice": 157,
+    "discount": 28,
+    "category": "Personal Care",
+    "subcategory": "Sanitizer",
+    "brand": "Himalaya",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 104,
+    "rating": 4.8,
+    "reviewCount": 413,
+    "tags": [
+      "personal care",
+      "sanitizer",
+      "himalaya"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "59",
+    "name": "Nivea Family Body Scrub",
+    "description": "Dermatologically tested body scrub that provides effective care while being gentle on skin.",
+    "price": 164,
+    "originalPrice": 180,
+    "discount": 9,
+    "category": "Personal Care",
+    "subcategory": "Body Scrub",
+    "brand": "Nivea",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 54,
+    "rating": 4,
+    "reviewCount": 390,
+    "tags": [
+      "personal care",
+      "body scrub",
+      "nivea"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  },
+  {
+    "id": "60",
+    "name": "Sensodyne Natural Mouthwash",
+    "description": "Family-friendly mouthwash with natural ingredients for safe and effective cleansing.",
+    "price": 111,
+    "category": "Personal Care",
+    "subcategory": "Mouthwash",
+    "brand": "Sensodyne",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400",
+      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=400"
+    ],
+    "inStock": true,
+    "stockCount": 72,
+    "rating": 5,
+    "reviewCount": 147,
+    "tags": [
+      "personal care",
+      "mouthwash",
+      "sensodyne"
+    ],
+    "createdAt": "2025-09-23T06:31:59.853Z",
+    "updatedAt": "2025-09-23T06:31:59.853Z"
+  }
+]
