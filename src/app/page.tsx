@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { products, categories } from '@/data/products';
+import { products } from '@/data/products';
 import ProductCard from '@/components/ui/ProductCard';
+import { usePublicCategories } from '@/hooks/usePublicCategories';
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
+  const { categories, loading: categoriesLoading } = usePublicCategories();
   
   const featuredProducts = products.slice(0, 8);
   const bestSellers = products.filter(p => p.rating >= 4.5).slice(0, 6);
@@ -75,22 +77,72 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">
             Shop by Category
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                href={`/${category.slug}`}
-                className="group text-center"
-              >
-                <div className="bg-pink-50 rounded-full w-20 h-20 mx-auto mb-3 flex items-center justify-center group-hover:bg-pink-100 transition-colors">
-                  <span className="text-2xl text-pink-600">💄</span>
+          {categoriesLoading ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className="text-center animate-pulse">
+                  <div className="bg-gray-200 rounded-full w-20 h-20 mx-auto mb-3"></div>
+                  <div className="bg-gray-200 h-4 w-16 mx-auto rounded"></div>
                 </div>
-                <h3 className="font-medium text-gray-900 group-hover:text-pink-600 transition-colors">
-                  {category.name}
-                </h3>
-              </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : categories.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {categories.filter(c => !c.parentId).map((category) => (
+                <div key={category.id} className="group">
+                  <Link
+                    href={`/${category.slug}`}
+                    className="block text-center mb-4"
+                  >
+                    <div className="bg-pink-50 rounded-full w-20 h-20 mx-auto mb-3 flex items-center justify-center group-hover:bg-pink-100 transition-colors overflow-hidden">
+                      {category.image ? (
+                        <img
+                          src={category.image}
+                          alt={category.name}
+                          className="w-full h-full object-cover rounded-full"
+                        />
+                      ) : (
+                        <span className="text-2xl text-pink-600">💄</span>
+                      )}
+                    </div>
+                    <h3 className="font-medium text-gray-900 group-hover:text-pink-600 transition-colors">
+                      {category.name}
+                    </h3>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {category.productCount} products
+                    </p>
+                  </Link>
+                  
+                  {/* Subcategories */}
+                  {category.subcategories && category.subcategories.length > 0 && (
+                    <div className="space-y-1">
+                      {category.subcategories.slice(0, 4).map((sub) => (
+                        <Link
+                          key={sub.id}
+                          href={`/${category.slug}/${sub.slug}`}
+                          className="block text-sm text-gray-600 hover:text-pink-600 transition-colors text-center py-1"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                      {category.subcategories.length > 4 && (
+                        <Link
+                          href={`/${category.slug}`}
+                          className="block text-xs text-pink-600 hover:text-pink-700 font-medium text-center py-1"
+                        >
+                          +{category.subcategories.length - 4} more
+                        </Link>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-8">
+              <p className="text-gray-500">Categories will be available soon!</p>
+            </div>
+          )}
         </div>
       </section>
 

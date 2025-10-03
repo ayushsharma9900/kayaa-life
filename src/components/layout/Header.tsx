@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/contexts/CartContext';
 import { useWishlist } from '@/contexts/WishlistContext';
+import { usePublicCategories } from '@/hooks/usePublicCategories';
 import { 
   MagnifyingGlassIcon,
   ShoppingBagIcon,
@@ -16,6 +17,7 @@ import {
 export default function Header() {
   const { state } = useCart();
   const { state: wishlistState } = useWishlist();
+  const { categories } = usePublicCategories();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -61,18 +63,41 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/skincare" className="text-gray-700 hover:text-pink-600 font-medium">
-              Skincare
-            </Link>
-            <Link href="/makeup" className="text-gray-700 hover:text-pink-600 font-medium">
-              Makeup
-            </Link>
-            <Link href="/hair-care" className="text-gray-700 hover:text-pink-600 font-medium">
-              Hair Care
-            </Link>
-            <Link href="/fragrance" className="text-gray-700 hover:text-pink-600 font-medium">
-              Fragrance
-            </Link>
+            {categories.slice(0, 4).map((category) => (
+              <div key={category.id} className="relative group">
+                <Link 
+                  href={`/${category.slug}`} 
+                  className="text-gray-700 hover:text-pink-600 font-medium"
+                >
+                  {category.name}
+                </Link>
+                {category.subcategories && category.subcategories.length > 0 && (
+                  <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 min-w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border">
+                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b">
+                      {category.name}
+                    </div>
+                    {category.subcategories.map((sub) => (
+                      <Link
+                        key={sub.id}
+                        href={`/${category.slug}/${sub.slug}`}
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors"
+                      >
+                        <div className="w-2 h-2 bg-pink-300 rounded-full mr-3"></div>
+                        {sub.name}
+                      </Link>
+                    ))}
+                    <div className="border-t mt-1 pt-1">
+                      <Link
+                        href={`/${category.slug}`}
+                        className="block px-4 py-2 text-sm font-medium text-pink-600 hover:bg-pink-50 transition-colors"
+                      >
+                        View All {category.name}
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </nav>
 
           {/* Search Bar - Desktop */}
@@ -147,35 +172,33 @@ export default function Header() {
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="py-4 space-y-4">
-              <Link 
-                href="/skincare" 
-                className="block text-gray-700 hover:text-pink-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Skincare
-              </Link>
-              <Link 
-                href="/makeup" 
-                className="block text-gray-700 hover:text-pink-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Makeup
-              </Link>
-              <Link 
-                href="/hair-care" 
-                className="block text-gray-700 hover:text-pink-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Hair Care
-              </Link>
-              <Link 
-                href="/fragrance" 
-                className="block text-gray-700 hover:text-pink-600 font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Fragrance
-              </Link>
+            <div className="py-4 space-y-2">
+              {categories.map((category) => (
+                <div key={category.id} className="space-y-1">
+                  <Link 
+                    href={`/${category.slug}`} 
+                    className="block text-gray-700 hover:text-pink-600 font-medium py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {category.name}
+                  </Link>
+                  {category.subcategories && category.subcategories.length > 0 && (
+                    <div className="pl-4 space-y-1">
+                      {category.subcategories.map((sub) => (
+                        <Link
+                          key={sub.id}
+                          href={`/${category.slug}/${sub.slug}`}
+                          className="flex items-center text-sm text-gray-600 hover:text-pink-600 py-1"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mr-2"></div>
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         )}
