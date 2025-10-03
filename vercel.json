@@ -8,7 +8,7 @@
   ],
   "env": {
     "NEXT_PUBLIC_API_URL": "/api",
-    "BACKEND_URL": "http://localhost:5001"
+    "BACKEND_URL": "http://localhost:5000"
   },
   "functions": {
     "src/app/api/**/*.ts": {
