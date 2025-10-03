@@ -15,7 +15,7 @@ start "Nykaa Frontend" cmd /k "cd /d "C:\Users\resale gallery\nykaa-clone" && np
 
 echo.
 echo Both servers are starting in separate windows:
-echo - Backend: http://localhost:5001
+echo - Backend: http://localhost:5000
 echo - Frontend: http://localhost:3000
 echo.
 echo Press any key to exit this window...

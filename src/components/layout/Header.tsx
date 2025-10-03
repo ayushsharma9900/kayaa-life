@@ -78,7 +78,7 @@ export default function Header() {
                     </div>
                     {category.subcategories.map((sub) => (
                       <Link
-                        key={sub.id}
+                        key={sub._id || sub.id || sub.slug}
                         href={`/${category.slug}/${sub.slug}`}
                         className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-pink-50 hover:text-pink-600 transition-colors"
                       >
@@ -186,7 +186,7 @@ export default function Header() {
                     <div className="pl-4 space-y-1">
                       {category.subcategories.map((sub) => (
                         <Link
-                          key={sub.id}
+                          key={sub._id || sub.id || sub.slug}
                           href={`/${category.slug}/${sub.slug}`}
                           className="flex items-center text-sm text-gray-600 hover:text-pink-600 py-1"
                           onClick={() => setIsMenuOpen(false)}

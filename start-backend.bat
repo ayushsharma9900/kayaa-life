@@ -1,5 +1,5 @@
 @echo off
-cd /d "C:\Users\resale gallery\nykaa-clone\backend"
+cd /d "c:\projects\kayaalife\backend"
 echo Starting backend server on port 5001...
 npm run dev
 pause

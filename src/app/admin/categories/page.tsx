@@ -312,7 +312,7 @@ export default function CategoriesPage() {
           </div>
         </div>
 
-        {/* Draggable Categories List */}
+        {/* Draggable Categories List - Only show parent categories */}
         <DraggableCategoryList
           categories={filteredCategories.filter(c => !c.parentId)}
           onReorder={handleReorder}

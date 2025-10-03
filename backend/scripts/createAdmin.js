@@ -19,15 +19,11 @@ async function createAdmin() {
       return;
     }
 
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(adminPassword, salt);
-
-    // Create admin user
+    // Create admin user (password will be hashed by pre-save middleware)
     const admin = await User.create({
       name: 'Admin User',
       email: adminEmail,
-      password: hashedPassword,
+      password: adminPassword,
       role: 'admin'
     });
 

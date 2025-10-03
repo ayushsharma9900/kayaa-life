@@ -49,15 +49,24 @@ router.get('/public', [
           isActive: true
         });
         
+        // Get unique subcategories to prevent duplicates
         const subcategories = await Category.find({
           parentId: category._id,
           isActive: true
-        }).sort({ sortOrder: 1, name: 1 }).select('name slug');
+        })
+        .sort({ sortOrder: 1, name: 1 })
+        .select('name slug _id isActive')
+        .lean();
+        
+        // Remove any potential duplicates by name
+        const uniqueSubcategories = subcategories.filter((sub, index, self) => 
+          index === self.findIndex(s => s.name === sub.name)
+        );
         
         return {
           ...category.toJSON(),
           productCount,
-          subcategories
+          subcategories: uniqueSubcategories
         };
       })
     );
@@ -114,14 +123,14 @@ router.get('/admin/all', authorize('manager', 'admin'), [
       ];
     }
 
-    // Get categories with product counts
+    // Get categories with product counts and subcategories
     const categories = await Category.find(filter)
       .sort({ sortOrder: 1, createdAt: -1 })
       .skip(skip)
       .limit(limit)
       .select('-__v');
 
-    // Get product counts for each category
+    // Get product counts and subcategories for each category
     const categoriesWithCounts = await Promise.all(
       categories.map(async (category) => {
         const productCount = await Product.countDocuments({
@@ -131,10 +140,28 @@ router.get('/admin/all', authorize('manager', 'admin'), [
           category: category.name,
           isActive: true
         });
+        
+        // Get subcategories if this is a parent category
+        let subcategories = [];
+        if (!category.parentId) {
+          subcategories = await Category.find({
+            parentId: category._id
+          })
+          .sort({ sortOrder: 1, name: 1 })
+          .select('name slug _id isActive')
+          .lean();
+          
+          // Remove duplicates
+          subcategories = subcategories.filter((sub, index, self) => 
+            index === self.findIndex(s => s.name === sub.name)
+          );
+        }
+        
         return {
           ...category.toJSON(),
           productCount,
-          activeProductCount
+          activeProductCount,
+          subcategories
         };
       })
     );

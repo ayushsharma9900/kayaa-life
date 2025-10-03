@@ -14,7 +14,7 @@ Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd 'C:\Users\resa
 
 Write-Host ""
 Write-Host "Both servers are starting in separate windows:" -ForegroundColor Cyan
-Write-Host "- Backend: http://localhost:5001" -ForegroundColor White
+Write-Host "- Backend: http://localhost:5000" -ForegroundColor White
 Write-Host "- Frontend: http://localhost:3000" -ForegroundColor White
 Write-Host ""
 Write-Host "Press any key to exit this window..." -ForegroundColor Gray

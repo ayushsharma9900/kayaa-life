@@ -149,12 +149,19 @@ function SortableCategory({
           </div>
         </div>
         
-        {/* Subcategories */}
-        {category.subcategories && category.subcategories.length > 0 && (
+        {/* Subcategories - Only show for parent categories */}
+        {!category.parentId && category.subcategories && category.subcategories.length > 0 && (
           <div className="mt-4 pl-8 space-y-2">
-            {category.subcategories.map((sub) => (
-              <div key={sub._id} className="flex items-center gap-2 p-2 bg-gray-50 rounded">
-                <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+            <div className="text-xs font-medium text-gray-500 mb-2">
+              Subcategories ({category.subcategories.length})
+            </div>
+            {category.subcategories
+              .filter((sub, index, self) => 
+                index === self.findIndex(s => s.name === sub.name)
+              )
+              .map((sub) => (
+              <div key={`${sub._id}-${sub.name}`} className="flex items-center gap-2 p-2 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
                 <span className="text-sm font-medium text-gray-700">{sub.name}</span>
                 <span className="text-xs text-gray-500">/{sub.slug}</span>
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ml-2 ${
@@ -167,14 +174,14 @@ function SortableCategory({
                 <div className="ml-auto flex gap-1">
                   <button
                     onClick={() => onEdit(sub)}
-                    className="text-yellow-600 hover:text-yellow-900 p-1"
+                    className="text-yellow-600 hover:text-yellow-900 p-1 rounded hover:bg-yellow-50"
                     title="Edit Subcategory"
                   >
                     <PencilIcon className="h-3 w-3" />
                   </button>
                   <button
                     onClick={() => onDelete(sub)}
-                    className="text-red-600 hover:text-red-900 p-1"
+                    className="text-red-600 hover:text-red-900 p-1 rounded hover:bg-red-50"
                     title="Delete Subcategory"
                   >
                     <TrashIcon className="h-3 w-3" />

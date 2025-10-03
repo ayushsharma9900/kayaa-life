@@ -5,14 +5,14 @@ This guide explains how to run the Nykaa Clone application with proper port conf
 ## Port Configuration
 
 - **Frontend (Next.js)**: `http://localhost:3000`
-- **Backend (Express)**: `http://localhost:5001`
+- **Backend (Express)**: `http://localhost:5000`
 
 ## Environment Files
 
 ### Frontend (.env.local)
 The frontend environment variables are configured in `.env.local`:
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5001/api
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
 NEXT_PUBLIC_APP_NAME=Nykaa Clone
 NEXTAUTH_URL=http://localhost:3000
 ```
@@ -21,7 +21,7 @@ NEXTAUTH_URL=http://localhost:3000
 The backend environment variables are in `backend/.env`:
 ```env
 NODE_ENV=development
-PORT=5001
+PORT=5000
 FRONTEND_URL=http://localhost:3000
 MONGODB_URI=mongodb://localhost:27017/nykaa-clone
 ```
@@ -56,7 +56,7 @@ npm run dev
 # Frontend only (port 3000)
 npm run dev
 
-# Backend only (port 5001)
+# Backend only (port 5000)
 npm run backend
 # or
 cd backend && npm start
@@ -74,7 +74,7 @@ cd backend && npm start
 
 ## Verifying Setup
 
-1. **Backend Health Check**: Visit `http://localhost:5001/api/health`
+1. **Backend Health Check**: Visit `http://localhost:5000/api/health`
 2. **Frontend**: Visit `http://localhost:3000`
 3. **API Connection**: The frontend should automatically connect to the backend API
 
@@ -96,7 +96,7 @@ If you encounter port conflicts:
 ### Common Issues
 
 1. **"EADDRINUSE" Error**: Port is already in use
-   - Kill the process using the port: `npx kill-port 3000` or `npx kill-port 5001`
+   - Kill the process using the port: `npx kill-port 3000` or `npx kill-port 5000`
    - Or change the port as described above
 
 2. **API Connection Failed**: 
@@ -113,11 +113,11 @@ If you encounter port conflicts:
 ```bash
 # Check what's running on specific ports
 netstat -ano | findstr :3000
-netstat -ano | findstr :5001
+netstat -ano | findstr :5000
 
 # Kill processes on specific ports (Windows)
 npx kill-port 3000
-npx kill-port 5001
+npx kill-port 5000
 
 # Check MongoDB status (if installed as service)
 net start MongoDB

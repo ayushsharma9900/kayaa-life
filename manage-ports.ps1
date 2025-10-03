@@ -2,7 +2,7 @@
 
 param(
     [string]$Action = "check",
-    [int[]]$Ports = @(3000, 5001)
+    [int[]]$Ports = @(3000, 5000)
 )
 
 function Show-Help {
@@ -14,7 +14,7 @@ function Show-Help {
     Write-Host "  .\manage-ports.ps1 check -Ports 3000,5001,8080  # Check specific ports"
     Write-Host "  .\manage-ports.ps1 kill -Ports 3000     # Kill process on port 3000"
     Write-Host ""
-    Write-Host "Default ports: 3000 (Frontend), 5001 (Backend)"
+    Write-Host "Default ports: 3000 (Frontend), 5000 (Backend)"
     Write-Host ""
 }
 
