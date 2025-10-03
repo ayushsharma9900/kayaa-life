@@ -7,7 +7,71 @@ const Product = require('../models/Product');
 
 const router = express.Router();
 
-// All routes are protected
+// Public endpoint for categories (before protect middleware)
+// @desc    Get active categories for public use
+// @route   GET /api/categories/public
+// @access  Public
+router.get('/public', [
+  query('limit').optional().isInt({ min: 1, max: 100 }).withMessage('Limit must be between 1 and 100'),
+  query('search').optional().isString().withMessage('Search must be a string')
+], async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation errors',
+        errors: errors.array()
+      });
+    }
+
+    const limit = parseInt(req.query.limit) || 20;
+    const filter = { isActive: true }; // Only return active categories for public
+    
+    if (req.query.search) {
+      filter.$or = [
+        { name: { $regex: req.query.search, $options: 'i' } },
+        { description: { $regex: req.query.search, $options: 'i' } }
+      ];
+    }
+
+    // Get active categories with product counts
+    const categories = await Category.find(filter)
+      .sort({ sortOrder: 1, createdAt: -1 })
+      .limit(limit)
+      .select('-__v');
+
+    // Get product counts and subcategories for each category
+    const categoriesWithCounts = await Promise.all(
+      categories.map(async (category) => {
+        const productCount = await Product.countDocuments({
+          category: category.name,
+          isActive: true
+        });
+        
+        const subcategories = await Category.find({
+          parentId: category._id,
+          isActive: true
+        }).sort({ sortOrder: 1, name: 1 }).select('name slug');
+        
+        return {
+          ...category.toJSON(),
+          productCount,
+          subcategories
+        };
+      })
+    );
+
+    res.json({
+      success: true,
+      data: categoriesWithCounts
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// All other routes are protected
 router.use(protect);
 
 // Admin routes (must come before parameterized routes)
@@ -401,6 +465,25 @@ router.delete('/:id', authorize('admin'), async (req, res, next) => {
   }
 });
 
+// @desc    Get subcategories for a category
+// @route   GET /api/categories/:id/subcategories
+// @access  Private
+router.get('/:id/subcategories', async (req, res, next) => {
+  try {
+    const subcategories = await Category.find({ 
+      parentId: req.params.id,
+      isActive: true 
+    }).sort({ sortOrder: 1, name: 1 });
+
+    res.json({
+      success: true,
+      data: subcategories
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // @desc    Get category statistics
 // @route   GET /api/categories/meta/stats
 // @access  Private
@@ -488,6 +571,44 @@ router.patch('/bulk/status', authorize('manager', 'admin'), [
         matchedCount: result.matchedCount,
         modifiedCount: result.modifiedCount
       }
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// @desc    Update category order
+// @route   PATCH /api/categories/bulk/order
+// @access  Private (manager and admin only)
+router.patch('/bulk/order', authorize('manager', 'admin'), [
+  body('categories').isArray({ min: 1 }).withMessage('Categories array is required'),
+  body('categories.*.id').notEmpty().withMessage('Category ID is required'),
+  body('categories.*.sortOrder').isInt().withMessage('Sort order must be integer')
+], async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: 'Validation errors',
+        errors: errors.array()
+      });
+    }
+
+    const { categories } = req.body;
+    const updates = categories.map(cat => ({
+      updateOne: {
+        filter: { _id: cat.id },
+        update: { sortOrder: cat.sortOrder, updatedAt: new Date() }
+      }
+    }));
+
+    const result = await Category.bulkWrite(updates);
+    console.log('Updated categories order:', result.modifiedCount);
+
+    res.json({
+      success: true,
+      message: 'Category order updated successfully'
     });
   } catch (error) {
     next(error);

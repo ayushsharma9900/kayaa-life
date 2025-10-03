@@ -13,6 +13,8 @@ export interface Category {
   isActive: boolean;
   productCount: number;
   sortOrder?: number;
+  parentId?: string;
+  subcategories?: Category[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -37,15 +39,34 @@ export function useCategories() {
       setLoading(true);
       setError(null);
       
-      const response = await apiService.getCategories({
-        limit: 100,
-        ...params
-      });
+      // Try authenticated endpoint first, fallback to public
+      let response;
+      try {
+        response = await apiService.getCategories({
+          limit: 100,
+          ...params
+        });
+      } catch (authError: any) {
+        if (authError.message.includes('401') || authError.message.includes('Not authorized')) {
+          // Fallback to public endpoint via Next.js API
+          const publicResponse = await fetch('/api/categories?limit=100');
+          if (publicResponse.ok) {
+            response = await publicResponse.json();
+          } else {
+            throw authError;
+          }
+        } else {
+          throw authError;
+        }
+      }
       
       if (response.success && response.data && Array.isArray(response.data)) {
         const mappedCategories = response.data.map((cat: any) => ({
           ...cat,
-          id: cat._id // Ensure we have both _id and id for compatibility
+          id: cat._id, // Ensure we have both _id and id for compatibility
+          createdAt: new Date(cat.createdAt),
+          updatedAt: new Date(cat.updatedAt),
+          subcategories: cat.subcategories || []
         }));
         setCategories(mappedCategories);
       } else {

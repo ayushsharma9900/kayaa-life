@@ -289,6 +289,13 @@ class ApiService {
   async getCategoryStats() {
     return this.request('/categories/meta/stats');
   }
+
+  async updateCategoryOrder(categories: { id: string; sortOrder: number }[]) {
+    return this.request('/categories/bulk/order', {
+      method: 'PATCH',
+      body: JSON.stringify({ categories }),
+    });
+  }
 }
 
 export const apiService = new ApiService();

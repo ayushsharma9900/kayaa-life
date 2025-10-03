@@ -3,17 +3,19 @@
 import { useState } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { useCategories, Category } from '@/hooks/useCategories';
+import DraggableCategoryList from '@/components/admin/DraggableCategoryList';
+import DraggableMenuManager from '@/components/admin/DraggableMenuManager';
+import { usePublicCategories } from '@/hooks/usePublicCategories';
+import { apiService } from '@/lib/api';
 import { 
   PlusIcon,
-  PencilIcon,
-  TrashIcon,
   FolderIcon,
-  TagIcon,
-  PhotoIcon
+  TagIcon
 } from '@heroicons/react/24/outline';
 
 export default function CategoriesPage() {
   const { categories, loading, error, createCategory, updateCategory, deleteCategory, toggleCategoryStatus } = useCategories();
+  const { categories: menuCategories } = usePublicCategories();
   const [showModal, setShowModal] = useState(false);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
@@ -26,8 +28,10 @@ export default function CategoriesPage() {
     slug: '',
     description: '',
     image: '',
-    isActive: true
+    isActive: true,
+    parentId: ''
   });
+  const [isSubcategory, setIsSubcategory] = useState(false);
 
   const filteredCategories = categories.filter(category =>
     category.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -36,24 +40,72 @@ export default function CategoriesPage() {
 
   const handleAddCategory = () => {
     setSelectedCategory(null);
+    setIsSubcategory(false);
     setFormData({
       name: '',
       slug: '',
       description: '',
       image: '',
-      isActive: true
+      isActive: true,
+      parentId: ''
     });
     setShowModal(true);
   };
 
+  const handleAddSubcategory = (parentId: string) => {
+    setSelectedCategory(null);
+    setIsSubcategory(true);
+    setFormData({
+      name: '',
+      slug: '',
+      description: '',
+      image: '',
+      isActive: true,
+      parentId
+    });
+    setShowModal(true);
+  };
+
+  const handleReorder = async (reorderedCategories: Category[]) => {
+    try {
+      const updates = reorderedCategories.map((cat, index) => ({
+        id: cat._id,
+        sortOrder: index + 1
+      }));
+      await apiService.updateCategoryOrder(updates);
+      // Refresh categories to get updated order
+      window.location.reload();
+    } catch (error: any) {
+      console.error('Failed to update order:', error);
+      alert('Failed to update category order');
+    }
+  };
+
+  const handleMenuReorder = async (reorderedCategories: any[]) => {
+    try {
+      const updates = reorderedCategories.map((cat, index) => ({
+        id: cat._id,
+        sortOrder: index + 1
+      }));
+      await apiService.updateCategoryOrder(updates);
+      // Show success message
+      alert('Menu order updated successfully!');
+    } catch (error: any) {
+      console.error('Failed to update menu order:', error);
+      alert('Failed to update menu order');
+    }
+  };
+
   const handleEditCategory = (category: Category) => {
     setSelectedCategory(category);
+    setIsSubcategory(!!category.parentId);
     setFormData({
       name: category.name,
       slug: category.slug,
       description: category.description,
       image: category.image || '',
-      isActive: category.isActive
+      isActive: category.isActive,
+      parentId: category.parentId || ''
     });
     setShowModal(true);
   };
@@ -108,7 +160,8 @@ export default function CategoriesPage() {
       slug: formData.slug,
       description: formData.description,
       image: formData.image || undefined,
-      isActive: formData.isActive
+      isActive: formData.isActive,
+      ...(formData.parentId && { parentId: formData.parentId })
     };
 
     try {
@@ -259,76 +312,15 @@ export default function CategoriesPage() {
           </div>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCategories.map((category) => (
-            <div key={category.id} className="bg-white rounded-lg shadow-sm overflow-hidden">
-              {/* Category Image */}
-              <div className="h-48 bg-gray-200 relative">
-                {category.image ? (
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <PhotoIcon className="h-16 w-16 text-gray-400" />
-                  </div>
-                )}
-                <div className="absolute top-4 right-4">
-                  <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                    category.isActive 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
-                    {category.isActive ? 'Active' : 'Inactive'}
-                  </span>
-                </div>
-              </div>
-
-              {/* Category Content */}
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-lg font-semibold text-gray-900">{category.name}</h3>
-                  <span className="text-sm text-gray-500">{category.productCount} products</span>
-                </div>
-                <p className="text-gray-600 text-sm mb-3">{category.description}</p>
-                <p className="text-xs text-gray-400 mb-4">/{category.slug}</p>
-                
-                {/* Actions */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <button
-                      onClick={() => handleEditCategory(category)}
-                      className="text-yellow-600 hover:text-yellow-900 p-1"
-                      title="Edit Category"
-                    >
-                      <PencilIcon className="h-4 w-4" />
-                    </button>
-                    <button
-                      onClick={() => handleDeleteCategory(category)}
-                      className="text-red-600 hover:text-red-900 p-1"
-                      title="Delete Category"
-                    >
-                      <TrashIcon className="h-4 w-4" />
-                    </button>
-                  </div>
-                  <button
-                    onClick={() => toggleCategoryStatus(category.id)}
-                    className={`px-3 py-1 text-xs font-medium rounded-full transition-colors ${
-                      category.isActive
-                        ? 'bg-red-100 text-red-800 hover:bg-red-200'
-                        : 'bg-green-100 text-green-800 hover:bg-green-200'
-                    }`}
-                  >
-                    {category.isActive ? 'Deactivate' : 'Activate'}
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Draggable Categories List */}
+        <DraggableCategoryList
+          categories={filteredCategories.filter(c => !c.parentId)}
+          onReorder={handleReorder}
+          onEdit={handleEditCategory}
+          onDelete={handleDeleteCategory}
+          onToggleStatus={handleToggleCategoryStatus}
+          onAddSubcategory={handleAddSubcategory}
+        />
 
         {filteredCategories.length === 0 && (
           <div className="text-center py-12">
@@ -336,6 +328,14 @@ export default function CategoriesPage() {
             <p className="text-gray-500 text-lg">No categories found matching your search.</p>
           </div>
         )}
+
+        {/* Menu Management */}
+        <div className="mt-8">
+          <DraggableMenuManager
+            categories={menuCategories.filter(c => !c.parentId)}
+            onReorder={handleMenuReorder}
+          />
+        </div>
       </div>
 
       {/* Category Modal */}
@@ -344,7 +344,7 @@ export default function CategoriesPage() {
           <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b">
               <h2 className="text-xl font-semibold text-red-600">
-                {selectedCategory ? 'Edit Category' : 'Add New Category'}
+                {selectedCategory ? 'Edit Category' : isSubcategory ? 'Add New Subcategory' : 'Add New Category'}
               </h2>
               <button
                 onClick={() => setShowModal(false)}
@@ -388,6 +388,26 @@ export default function CategoriesPage() {
                 />
                 <p className="text-sm text-gray-500 mt-1">URL-friendly version of the name</p>
               </div>
+
+              {isSubcategory && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Parent Category *
+                  </label>
+                  <select
+                    name="parentId"
+                    value={formData.parentId}
+                    onChange={(e) => setFormData(prev => ({ ...prev, parentId: e.target.value }))}
+                    required
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                  >
+                    <option value="">Select parent category</option>
+                    {categories.filter(c => !c.parentId).map(cat => (
+                      <option key={cat._id} value={cat._id}>{cat.name}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
