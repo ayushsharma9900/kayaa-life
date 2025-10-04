@@ -17,8 +17,10 @@ const categoryRoutes = require('./routes/categories');
 
 const app = express();
 
-// Connect to database
-connectDB();
+// Connect to database (non-blocking)
+connectDB().catch(err => {
+  console.log('Database connection failed, but server will continue running');
+});
 
 // Security middleware
 app.use(helmet());

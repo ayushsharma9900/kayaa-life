@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { 
   MagnifyingGlassIcon,
@@ -42,166 +42,34 @@ interface Order {
   updatedAt: Date;
 }
 
-const mockOrders: Order[] = [
-  {
-    id: '1',
-    orderNumber: 'ORD001',
-    customer: {
-      name: 'Sarah Johnson',
-      email: 'sarah.johnson@email.com',
-      phone: '+91 9876543210'
-    },
-    items: [
-      {
-        id: '1',
-        name: 'MAC Lipstick - Ruby Woo',
-        image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400',
-        price: 1950,
-        quantity: 1
-      }
-    ],
-    total: 1950,
-    status: 'delivered',
-    paymentStatus: 'paid',
-    shippingAddress: {
-      street: '123 Beauty Street',
-      city: 'Mumbai',
-      state: 'Maharashtra',
-      zipCode: '400001',
-      country: 'India'
-    },
-    orderDate: new Date('2024-02-20'),
-    updatedAt: new Date('2024-02-22')
-  },
-  {
-    id: '2',
-    orderNumber: 'ORD002',
-    customer: {
-      name: 'Emily Chen',
-      email: 'emily.chen@email.com',
-      phone: '+91 9876543211'
-    },
-    items: [
-      {
-        id: '2',
-        name: 'The Ordinary Niacinamide 10% + Zinc 1%',
-        image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400',
-        price: 700,
-        quantity: 2
-      }
-    ],
-    total: 1400,
-    status: 'shipped',
-    paymentStatus: 'paid',
-    shippingAddress: {
-      street: '456 Skincare Ave',
-      city: 'Delhi',
-      state: 'Delhi',
-      zipCode: '110001',
-      country: 'India'
-    },
-    orderDate: new Date('2024-02-19'),
-    updatedAt: new Date('2024-02-21')
-  },
-  {
-    id: '3',
-    orderNumber: 'ORD003',
-    customer: {
-      name: 'Priya Sharma',
-      email: 'priya.sharma@email.com',
-      phone: '+91 9876543212'
-    },
-    items: [
-      {
-        id: '3',
-        name: 'Urban Decay Naked3 Eyeshadow Palette',
-        image: 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400',
-        price: 3200,
-        quantity: 1
-      }
-    ],
-    total: 3200,
-    status: 'processing',
-    paymentStatus: 'paid',
-    shippingAddress: {
-      street: '789 Makeup Lane',
-      city: 'Bangalore',
-      state: 'Karnataka',
-      zipCode: '560001',
-      country: 'India'
-    },
-    orderDate: new Date('2024-02-18'),
-    updatedAt: new Date('2024-02-20')
-  },
-  {
-    id: '4',
-    orderNumber: 'ORD004',
-    customer: {
-      name: 'Jessica Wilson',
-      email: 'jessica.wilson@email.com',
-      phone: '+91 9876543213'
-    },
-    items: [
-      {
-        id: '4',
-        name: 'Lakme Perfect Radiance Facewash',
-        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400',
-        price: 175,
-        quantity: 3
-      }
-    ],
-    total: 525,
-    status: 'confirmed',
-    paymentStatus: 'paid',
-    shippingAddress: {
-      street: '321 Beauty Plaza',
-      city: 'Chennai',
-      state: 'Tamil Nadu',
-      zipCode: '600001',
-      country: 'India'
-    },
-    orderDate: new Date('2024-02-17'),
-    updatedAt: new Date('2024-02-19')
-  },
-  {
-    id: '5',
-    orderNumber: 'ORD005',
-    customer: {
-      name: 'Ariana Patel',
-      email: 'ariana.patel@email.com',
-      phone: '+91 9876543214'
-    },
-    items: [
-      {
-        id: '5',
-        name: 'Maybelline Fit Me Foundation',
-        image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400',
-        price: 599,
-        quantity: 1
-      }
-    ],
-    total: 599,
-    status: 'cancelled',
-    paymentStatus: 'refunded',
-    shippingAddress: {
-      street: '654 Fashion St',
-      city: 'Pune',
-      state: 'Maharashtra',
-      zipCode: '411001',
-      country: 'India'
-    },
-    orderDate: new Date('2024-02-16'),
-    updatedAt: new Date('2024-02-18')
-  }
-];
+
 
 export default function OrdersPage() {
-  const [orders] = useState<Order[]>(mockOrders);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [paymentFilter, setPaymentFilter] = useState('');
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
   const [showOrderModal, setShowOrderModal] = useState(false);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    try {
+      const response = await fetch('/api/orders');
+      const data = await response.json();
+      if (data.success) {
+        setOrders(data.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch orders:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Filter orders based on search and filters
   const filteredOrders = orders.filter(order => {
@@ -256,10 +124,31 @@ export default function OrdersPage() {
     setShowOrderModal(true);
   };
 
-  const handleUpdateOrderStatus = (orderId: string, newStatus: Order['status']) => {
-    // In a real app, this would make an API call
-    console.log(`Updating order ${orderId} to status: ${newStatus}`);
-    alert(`Order ${orderId} status updated to: ${newStatus}`);
+  const handleUpdateOrderStatus = async (orderId: string, newStatus: Order['status']) => {
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: orderId, status: newStatus })
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        // Refresh orders from API
+        fetchOrders();
+        
+        // Update selected order if modal is open
+        if (selectedOrder?.id === orderId) {
+          setSelectedOrder(prev => prev ? { ...prev, status: newStatus } : null);
+        }
+        
+        alert(`Order ${orderId} status updated to: ${newStatus}`);
+      } else {
+        throw new Error(data.error || 'Failed to update order');
+      }
+    } catch (error) {
+      alert('Failed to update order status');
+    }
   };
 
   const totalRevenue = orders.filter(o => o.paymentStatus === 'paid').reduce((sum, order) => sum + order.total, 0);
@@ -380,7 +269,11 @@ export default function OrdersPage() {
             </div>
           </div>
           
-          {filteredOrders.length === 0 ? (
+          {loading ? (
+            <div className="px-6 py-8 text-center">
+              <p className="text-gray-500">Loading orders...</p>
+            </div>
+          ) : filteredOrders.length === 0 ? (
             <div className="px-6 py-8 text-center">
               <p className="text-gray-500">No orders found matching your criteria.</p>
             </div>
@@ -460,9 +353,9 @@ export default function OrdersPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         <div>
-                          <div>{order.orderDate.toLocaleDateString()}</div>
+                          <div>{new Date(order.orderDate).toLocaleDateString()}</div>
                           <div className="text-xs text-gray-400">
-                            {order.orderDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            {new Date(order.orderDate).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                           </div>
                         </div>
                       </td>
@@ -475,13 +368,18 @@ export default function OrdersPage() {
                           >
                             <EyeIcon className="h-4 w-4" />
                           </button>
-                          <button 
-                            onClick={() => {/* Handle edit */}}
-                            className="text-yellow-600 hover:text-yellow-900 p-1"
-                            title="Update Order"
+                          <select
+                            value={order.status}
+                            onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value as Order['status'])}
+                            className="text-xs border border-gray-300 rounded px-2 py-1"
+                            title="Update Status"
                           >
-                            <PencilIcon className="h-4 w-4" />
-                          </button>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="processing">Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                          </select>
                         </div>
                       </td>
                     </tr>
@@ -584,11 +482,11 @@ export default function OrdersPage() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span>Order Placed</span>
-                      <span className="text-gray-600">{selectedOrder.orderDate.toLocaleString()}</span>
+                      <span className="text-gray-600">{new Date(selectedOrder.orderDate).toLocaleString()}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span>Last Updated</span>
-                      <span className="text-gray-600">{selectedOrder.updatedAt.toLocaleString()}</span>
+                      <span className="text-gray-600">{new Date(selectedOrder.updatedAt).toLocaleString()}</span>
                     </div>
                   </div>
                 </div>

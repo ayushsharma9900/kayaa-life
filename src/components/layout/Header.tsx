@@ -63,7 +63,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            {categories.slice(0, 4).map((category) => (
+            {categories.map((category) => (
               <div key={category.id} className="relative group">
                 <Link 
                   href={`/${category.slug}`} 
@@ -71,12 +71,12 @@ export default function Header() {
                 >
                   {category.name}
                 </Link>
-                {category.subcategories && category.subcategories.length > 0 && (
-                  <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 min-w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border">
-                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b">
-                      {category.name}
-                    </div>
-                    {category.subcategories.map((sub) => (
+                <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 min-w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border">
+                  <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide border-b">
+                    {category.name}
+                  </div>
+                  {category.subcategories && category.subcategories.length > 0 ? (
+                    category.subcategories.map((sub) => (
                       <Link
                         key={sub._id || sub.id || sub.slug}
                         href={`/${category.slug}/${sub.slug}`}
@@ -85,17 +85,21 @@ export default function Header() {
                         <div className="w-2 h-2 bg-pink-300 rounded-full mr-3"></div>
                         {sub.name}
                       </Link>
-                    ))}
-                    <div className="border-t mt-1 pt-1">
-                      <Link
-                        href={`/${category.slug}`}
-                        className="block px-4 py-2 text-sm font-medium text-pink-600 hover:bg-pink-50 transition-colors"
-                      >
-                        View All {category.name}
-                      </Link>
+                    ))
+                  ) : (
+                    <div className="px-4 py-2 text-sm text-gray-500 italic">
+                      No subcategories available
                     </div>
+                  )}
+                  <div className="border-t mt-1 pt-1">
+                    <Link
+                      href={`/${category.slug}`}
+                      className="block px-4 py-2 text-sm font-medium text-pink-600 hover:bg-pink-50 transition-colors"
+                    >
+                      View All {category.name}
+                    </Link>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </nav>

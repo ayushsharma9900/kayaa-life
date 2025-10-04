@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AdminLayout from '@/components/admin/AdminLayout';
 import { 
   CogIcon,
@@ -15,6 +15,8 @@ import {
 
 export default function SettingsPage() {
   const [activeTab, setActiveTab] = useState('general');
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
   const [settings, setSettings] = useState({
     general: {
       siteName: 'Kaaya Beauty',
@@ -83,6 +85,24 @@ export default function SettingsPage() {
     }
   });
 
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      const response = await fetch('/api/settings');
+      const data = await response.json();
+      if (data.success) {
+        setSettings(data.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch settings:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const tabs = [
     { id: 'general', name: 'General', icon: CogIcon },
     { id: 'notifications', name: 'Notifications', icon: BellIcon },
@@ -114,9 +134,26 @@ export default function SettingsPage() {
     }));
   };
 
-  const handleSaveSettings = () => {
-    // In a real app, this would save to the backend
-    alert('Settings saved successfully!');
+  const handleSaveSettings = async () => {
+    try {
+      setSaving(true);
+      const response = await fetch('/api/settings', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings)
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        alert('Settings saved successfully!');
+      } else {
+        throw new Error(data.error || 'Failed to save settings');
+      }
+    } catch (error) {
+      alert('Failed to save settings');
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -130,9 +167,10 @@ export default function SettingsPage() {
           </div>
           <button
             onClick={handleSaveSettings}
-            className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition-colors"
+            disabled={saving || loading}
+            className="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Save Changes
+            {saving ? 'Saving...' : 'Save Changes'}
           </button>
         </div>
 
@@ -159,6 +197,13 @@ export default function SettingsPage() {
 
           {/* Settings Content */}
           <div className="flex-1">
+            {loading ? (
+              <div className="bg-white rounded-lg shadow-sm p-6">
+                <div className="text-center">
+                  <p className="text-gray-500">Loading settings...</p>
+                </div>
+              </div>
+            ) : (
             <div className="bg-white rounded-lg shadow-sm">
               {/* General Settings */}
               {activeTab === 'general' && (
@@ -600,6 +645,7 @@ export default function SettingsPage() {
                 </div>
               )}
             </div>
+            )}
           </div>
         </div>
       </div>

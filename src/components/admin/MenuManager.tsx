@@ -12,14 +12,18 @@ import {
 
 interface MenuItem {
   _id: string;
+  id: string;
   name: string;
   slug: string;
   description: string;
   isActive: boolean;
-  showInMenu: boolean;
-  menuOrder: number;
+  showInMenu?: boolean;
+  menuOrder?: number;
   parentId?: string;
-  children?: MenuItem[];
+  subcategories?: MenuItem[];
+  productCount?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 interface MenuManagerProps {
@@ -38,7 +42,12 @@ export default function MenuManager({ onAddItem }: MenuManagerProps) {
       const data = await response.json();
       
       if (data.success) {
-        setMenuItems(data.data || []);
+        const mappedItems = (data.data || []).map((item: any) => ({
+          ...item,
+          showInMenu: item.showInMenu ?? true,
+          menuOrder: item.menuOrder ?? 0
+        }));
+        setMenuItems(mappedItems);
       } else {
         setError('Failed to fetch menu items');
       }
@@ -126,8 +135,11 @@ export default function MenuManager({ onAddItem }: MenuManagerProps) {
                     <div>
                       <h3 className="font-medium text-gray-900">{item.name}</h3>
                       <p className="text-sm text-gray-500">{item.slug}</p>
-                      {item.children && item.children.length > 0 && (
-                        <p className="text-xs text-blue-600">{item.children.length} subcategories</p>
+                      {item.subcategories && item.subcategories.length > 0 && (
+                        <p className="text-xs text-blue-600">{item.subcategories.length} subcategories</p>
+                      )}
+                      {item.productCount !== undefined && (
+                        <p className="text-xs text-gray-500">{item.productCount} products</p>
                       )}
                     </div>
                   </div>
@@ -135,10 +147,10 @@ export default function MenuManager({ onAddItem }: MenuManagerProps) {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => handleToggleVisibility(item._id, !item.showInMenu)}
-                      className={`p-2 rounded-md ${item.showInMenu ? 'text-green-600 hover:bg-green-50' : 'text-gray-400 hover:bg-gray-50'}`}
-                      title={item.showInMenu ? 'Hide from menu' : 'Show in menu'}
+                      className={`p-2 rounded-md ${(item.showInMenu ?? true) ? 'text-green-600 hover:bg-green-50' : 'text-gray-400 hover:bg-gray-50'}`}
+                      title={(item.showInMenu ?? true) ? 'Hide from menu' : 'Show in menu'}
                     >
-                      {item.showInMenu ? <EyeIcon className="h-4 w-4" /> : <EyeSlashIcon className="h-4 w-4" />}
+                      {(item.showInMenu ?? true) ? <EyeIcon className="h-4 w-4" /> : <EyeSlashIcon className="h-4 w-4" />}
                     </button>
                     <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-md">
                       <PencilIcon className="h-4 w-4" />
@@ -162,7 +174,7 @@ export default function MenuManager({ onAddItem }: MenuManagerProps) {
           </div>
           <div>
             <span className="font-medium text-gray-900">
-              {menuItems.filter(item => item.showInMenu).length}
+              {menuItems.filter(item => item.showInMenu ?? true).length}
             </span> visible in menu
           </div>
           <div>

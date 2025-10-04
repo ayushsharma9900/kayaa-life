@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Product } from '@/types';
 import { products as fallbackProducts } from '@/data/products';
-import { apiService } from '@/lib/api';
+
 import { mapBackendToFrontend, mapFrontendToBackend } from '@/lib/dataMapper';
 import { validateProductForAPI, logValidationResults } from '@/lib/productValidation';
 
@@ -18,31 +18,19 @@ export function useAdminProducts() {
       setLoading(true);
       setError(null);
       
-      // Use admin endpoint with maximum allowed limit to get all products
-      const response = await apiService.getAllProductsForAdmin({ limit: 100 });
-      if (response.success && response.data && Array.isArray(response.data)) {
-        const mappedProducts = response.data.map(mapBackendToFrontend);
-        setProducts(mappedProducts);
+      const response = await fetch('/api/products');
+      if (!response.ok) throw new Error('Failed to fetch products');
+      const data = await response.json();
+      
+      if (data.success && data.data && Array.isArray(data.data)) {
+        setProducts(data.data);
       } else {
         throw new Error('Invalid API response');
       }
     } catch (err) {
-      console.warn('Failed to fetch from admin API, using regular API:', err);
-      
-      // Fallback to regular products API with maximum allowed limit
-      try {
-        const response = await apiService.getProducts({ limit: 100 });
-        if (response.success && response.data && Array.isArray(response.data)) {
-          const mappedProducts = response.data.map(mapBackendToFrontend);
-          setProducts(mappedProducts);
-        } else {
-          throw new Error('Invalid API response');
-        }
-      } catch (fallbackErr) {
-        console.warn('Failed to fetch from API, using fallback data:', fallbackErr);
-        setError('Using offline data - API connection failed');
-        setProducts(fallbackProducts);
-      }
+      console.warn('Failed to fetch from API, using fallback data:', err);
+      setError('Using offline data - API connection failed');
+      setProducts(fallbackProducts);
     } finally {
       setLoading(false);
     }
@@ -56,11 +44,16 @@ export function useAdminProducts() {
   // Add a new product
   const addProduct = async (product: Product) => {
     try {
-      const backendProduct = mapFrontendToBackend(product);
-      const response = await apiService.createProduct(backendProduct);
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(product)
+      });
+      if (!response.ok) throw new Error('Failed to create product');
+      const result = await response.json();
       
-      if (response.success && response.data) {
-        const newProduct = mapBackendToFrontend(response.data);
+      if (result.success && result.data) {
+        const newProduct = result.data;
         setProducts(prev => [...prev, newProduct]);
         return newProduct;
       } else {
@@ -83,14 +76,16 @@ export function useAdminProducts() {
   // Update an existing product
   const updateProduct = async (updatedProduct: Product) => {
     try {
-      const backendProduct = mapFrontendToBackend(updatedProduct);
-      console.log('Frontend product:', updatedProduct);
-      console.log('Mapped backend product:', backendProduct);
+      const response = await fetch('/api/products', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ _id: updatedProduct.id, ...updatedProduct })
+      });
+      if (!response.ok) throw new Error('Failed to update product');
+      const result = await response.json();
       
-      const response = await apiService.updateProduct(updatedProduct.id, backendProduct);
-      
-      if (response.success && response.data) {
-        const mappedProduct = mapBackendToFrontend(response.data);
+      if (result.success && result.data) {
+        const mappedProduct = result.data;
         setProducts(prev => 
           prev.map(product => 
             product.id === updatedProduct.id ? mappedProduct : product
@@ -116,9 +111,13 @@ export function useAdminProducts() {
   // Delete a product
   const deleteProduct = async (productId: string) => {
     try {
-      const response = await apiService.deleteProduct(productId);
+      const response = await fetch(`/api/products?id=${productId}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) throw new Error('Failed to delete product');
+      const result = await response.json();
       
-      if (response.success) {
+      if (result.success) {
         setProducts(prev => prev.filter(product => product.id !== productId));
         return true;
       } else {

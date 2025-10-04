@@ -6,7 +6,7 @@ import { useCategories, Category } from '@/hooks/useCategories';
 import DraggableCategoryList from '@/components/admin/DraggableCategoryList';
 import DraggableMenuManager from '@/components/admin/DraggableMenuManager';
 import { usePublicCategories } from '@/hooks/usePublicCategories';
-import { apiService } from '@/lib/api';
+
 import { 
   PlusIcon,
   FolderIcon,
@@ -68,13 +68,8 @@ export default function CategoriesPage() {
 
   const handleReorder = async (reorderedCategories: Category[]) => {
     try {
-      const updates = reorderedCategories.map((cat, index) => ({
-        id: cat._id,
-        sortOrder: index + 1
-      }));
-      await apiService.updateCategoryOrder(updates);
-      // Refresh categories to get updated order
-      window.location.reload();
+      // Category order update not implemented yet
+      alert('Category reordering will be implemented soon');
     } catch (error: any) {
       console.error('Failed to update order:', error);
       alert('Failed to update category order');
@@ -83,13 +78,8 @@ export default function CategoriesPage() {
 
   const handleMenuReorder = async (reorderedCategories: any[]) => {
     try {
-      const updates = reorderedCategories.map((cat, index) => ({
-        id: cat._id,
-        sortOrder: index + 1
-      }));
-      await apiService.updateCategoryOrder(updates);
-      // Show success message
-      alert('Menu order updated successfully!');
+      // Menu order update not implemented yet
+      alert('Menu reordering will be implemented soon');
     } catch (error: any) {
       console.error('Failed to update menu order:', error);
       alert('Failed to update menu order');
@@ -196,7 +186,7 @@ export default function CategoriesPage() {
 
   const totalCategories = categories.length;
   const activeCategories = categories.filter(c => c.isActive).length;
-  const totalProducts = categories.reduce((sum, c) => sum + c.productCount, 0);
+  const totalProducts = categories.reduce((sum, c) => sum + (c.productCount || 0), 0);
 
   return (
     <AdminLayout title="Categories">

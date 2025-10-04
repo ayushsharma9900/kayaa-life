@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { apiService } from '@/lib/api';
+
 
 export interface Category {
   _id: string;
@@ -39,31 +39,17 @@ export function useCategories() {
       setLoading(true);
       setError(null);
       
-      // Try authenticated endpoint first, fallback to public
-      let response;
-      try {
-        response = await apiService.getCategories({
-          limit: 100,
-          ...params
-        });
-      } catch (authError: any) {
-        if (authError.message.includes('401') || authError.message.includes('Not authorized')) {
-          // Fallback to public endpoint via Next.js API
-          const publicResponse = await fetch('/api/categories?limit=100');
-          if (publicResponse.ok) {
-            response = await publicResponse.json();
-          } else {
-            throw authError;
-          }
-        } else {
-          throw authError;
-        }
+      const publicResponse = await fetch('/api/categories?limit=100');
+      if (!publicResponse.ok) {
+        throw new Error(`HTTP ${publicResponse.status}: ${publicResponse.statusText}`);
       }
+      const response = await publicResponse.json();
       
       if (response.success && response.data && Array.isArray(response.data)) {
         const mappedCategories = response.data.map((cat: any) => ({
           ...cat,
           id: cat._id, // Ensure we have both _id and id for compatibility
+          productCount: cat.productCount || 0, // Ensure productCount is always a number
           createdAt: new Date(cat.createdAt),
           updatedAt: new Date(cat.updatedAt),
           subcategories: cat.subcategories || []
@@ -89,18 +75,18 @@ export function useCategories() {
   // Create a new category
   const createCategory = async (categoryData: CategoryFormData) => {
     try {
-      const response = await apiService.createCategory(categoryData);
+      const response = await fetch('/api/categories', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(categoryData)
+      });
       
-      if (response.success && response.data) {
-        const newCategory = {
-          ...response.data,
-          id: response.data._id,
-          productCount: 0
-        };
-        setCategories(prev => [...prev, newCategory]);
-        return newCategory;
+      const data = await response.json();
+      if (data.success && data.data) {
+        await fetchCategories(); // Refresh categories
+        return data.data;
       } else {
-        throw new Error('Failed to create category');
+        throw new Error(data.error || 'Failed to create category');
       }
     } catch (err: any) {
       console.error('Failed to create category:', err);
@@ -111,21 +97,18 @@ export function useCategories() {
   // Update an existing category
   const updateCategory = async (categoryId: string, categoryData: Partial<CategoryFormData>) => {
     try {
-      const response = await apiService.updateCategory(categoryId, categoryData);
+      const response = await fetch('/api/categories', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: categoryId, ...categoryData })
+      });
       
-      if (response.success && response.data) {
-        const updatedCategory = {
-          ...response.data,
-          id: response.data._id
-        };
-        setCategories(prev => 
-          prev.map(cat => 
-            cat._id === categoryId ? updatedCategory : cat
-          )
-        );
-        return updatedCategory;
+      const data = await response.json();
+      if (data.success) {
+        await fetchCategories(); // Refresh categories
+        return data.data;
       } else {
-        throw new Error('Failed to update category');
+        throw new Error(data.error || 'Failed to update category');
       }
     } catch (err: any) {
       console.error('Failed to update category:', err);
@@ -136,21 +119,21 @@ export function useCategories() {
   // Toggle category active status
   const toggleCategoryStatus = async (categoryId: string) => {
     try {
-      const response = await apiService.toggleCategoryStatus(categoryId);
+      const category = categories.find(c => c._id === categoryId);
+      if (!category) throw new Error('Category not found');
       
-      if (response.success && response.data) {
-        const updatedCategory = {
-          ...response.data,
-          id: response.data._id
-        };
-        setCategories(prev => 
-          prev.map(cat => 
-            cat._id === categoryId ? updatedCategory : cat
-          )
-        );
-        return updatedCategory;
+      const response = await fetch('/api/categories', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: categoryId, isActive: !category.isActive })
+      });
+      
+      const data = await response.json();
+      if (data.success) {
+        await fetchCategories(); // Refresh categories
+        return data.data;
       } else {
-        throw new Error('Failed to toggle category status');
+        throw new Error(data.error || 'Failed to toggle category status');
       }
     } catch (err: any) {
       console.error('Failed to toggle category status:', err);
@@ -161,13 +144,18 @@ export function useCategories() {
   // Delete a category
   const deleteCategory = async (categoryId: string) => {
     try {
-      const response = await apiService.deleteCategory(categoryId);
+      const response = await fetch('/api/categories', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: categoryId })
+      });
       
-      if (response.success) {
-        setCategories(prev => prev.filter(cat => cat._id !== categoryId));
+      const data = await response.json();
+      if (data.success) {
+        await fetchCategories(); // Refresh categories
         return true;
       } else {
-        throw new Error('Failed to delete category');
+        throw new Error(data.error || 'Failed to delete category');
       }
     } catch (err: any) {
       console.error('Failed to delete category:', err);

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { apiService } from '@/lib/api';
+
 
 export default function AdminLoginPage() {
   const [formData, setFormData] = useState({

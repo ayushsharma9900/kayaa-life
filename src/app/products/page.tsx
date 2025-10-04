@@ -2,12 +2,15 @@
 
 import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { products, categories } from '@/data/products';
+import { useProducts } from '@/hooks/useProducts';
+import { usePublicCategories } from '@/hooks/usePublicCategories';
 import ProductCard from '@/components/ui/ProductCard';
 import { ChevronDownIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 function ProductsContent() {
   const searchParams = useSearchParams();
+  const { products, loading: productsLoading } = useProducts();
+  const { categories, loading: categoriesLoading } = usePublicCategories();
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('featured');
   const [priceRange, setPriceRange] = useState<string>('');
@@ -73,7 +76,7 @@ function ProductsContent() {
     }
 
     return filtered;
-  }, [selectedCategory, sortBy, priceRange, searchQuery]);
+  }, [products, selectedCategory, sortBy, priceRange, searchQuery]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -121,19 +124,28 @@ function ProductsContent() {
                   />
                   <span className="ml-2 text-sm text-pink-600">All Categories</span>
                 </label>
-                {categories.map((category) => (
-                  <label key={category.id} className="flex items-center">
-                    <input
-                      type="radio"
-                      name="category"
-                      value={category.name}
-                      checked={selectedCategory === category.name}
-                      onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="text-pink-600 focus:ring-pink-500"
-                    />
-                    <span className="ml-2 text-sm text-pink-600">{category.name}</span>
-                  </label>
-                ))}
+                {categoriesLoading ? (
+                  [...Array(5)].map((_, i) => (
+                    <div key={i} className="flex items-center animate-pulse">
+                      <div className="bg-gray-200 w-4 h-4 rounded mr-2"></div>
+                      <div className="bg-gray-200 h-4 w-20 rounded"></div>
+                    </div>
+                  ))
+                ) : (
+                  categories.map((category) => (
+                    <label key={category.id} className="flex items-center">
+                      <input
+                        type="radio"
+                        name="category"
+                        value={category.name}
+                        checked={selectedCategory === category.name}
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                        className="text-pink-600 focus:ring-pink-500"
+                      />
+                      <span className="ml-2 text-sm text-pink-600">{category.name}</span>
+                    </label>
+                  ))
+                )}
               </div>
             </div>
 

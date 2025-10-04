@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 interface ApiResponse<T> {
   success: boolean;
@@ -39,6 +39,7 @@ class ApiService {
       
       // Check if response is ok
       if (!response.ok) {
+        console.error('API Request Failed:', { url, status: response.status, statusText: response.statusText });
         let errorMessage = `HTTP ${response.status}`;
         let detailedErrors: any[] = [];
         try {
@@ -56,7 +57,8 @@ class ApiService {
             status: response.status,
             message: errorData.message,
             errors: detailedErrors,
-            url: url
+            url: url,
+            endpoint: endpoint
           });
         } catch {
           // If JSON parsing fails, use status text

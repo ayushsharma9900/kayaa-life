@@ -2,7 +2,8 @@
 
 import { useState, useMemo, use } from 'react';
 import { notFound } from 'next/navigation';
-import { products, categories } from '@/data/products';
+import { usePublicCategories } from '@/hooks/usePublicCategories';
+import { useProducts } from '@/hooks/useProducts';
 import ProductCard from '@/components/ui/ProductCard';
 import { ChevronDownIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
@@ -14,20 +15,19 @@ interface CategoryPageProps {
 
 export default function CategoryPage({ params }: CategoryPageProps) {
   const { category } = use(params);
+  const [sortBy, setSortBy] = useState<string>('featured');
+  const [priceRange, setPriceRange] = useState<string>('');
+  const [showFilters, setShowFilters] = useState(false);
+  
+  const { categories, loading: categoriesLoading } = usePublicCategories();
+  const { products, loading: productsLoading } = useProducts();
   
   // Find the category by slug
   const currentCategory = categories.find(cat => cat.slug === category);
   
-  // If category doesn't exist, show 404
-  if (!currentCategory) {
-    notFound();
-  }
-
-  const [sortBy, setSortBy] = useState<string>('featured');
-  const [priceRange, setPriceRange] = useState<string>('');
-  const [showFilters, setShowFilters] = useState(false);
-
   const filteredAndSortedProducts = useMemo(() => {
+    if (!currentCategory || !products.length) return [];
+    
     let filtered = products.filter(product => 
       product.category.toLowerCase() === currentCategory.name.toLowerCase()
     );
@@ -63,7 +63,21 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     }
 
     return filtered;
-  }, [currentCategory, sortBy, priceRange]);
+  }, [currentCategory, products, sortBy, priceRange]);
+  
+  // Show loading state while data is being fetched
+  if (categoriesLoading || productsLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pink-600"></div>
+      </div>
+    );
+  }
+  
+  // If category doesn't exist after loading, show 404
+  if (!currentCategory) {
+    notFound();
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">

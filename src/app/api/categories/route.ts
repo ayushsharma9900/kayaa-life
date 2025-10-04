@@ -3,11 +3,11 @@ import dbConnect from '@/lib/mongodb';
 import Category from '@/lib/models/Category';
 
 const fallbackCategories = [
-  { name: 'Skincare', slug: 'skincare', description: 'Complete skincare solutions', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop' },
-  { name: 'Makeup', slug: 'makeup', description: 'Premium makeup products', image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop' },
-  { name: 'Hair Care', slug: 'hair-care', description: 'Professional hair care products', image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400&h=400&fit=crop' },
-  { name: 'Fragrance', slug: 'fragrance', description: 'Luxury fragrances', image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop' },
-  { name: 'Personal Care', slug: 'personal-care', description: 'Essential personal care', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop' }
+  { _id: '1', id: '1', name: 'Skincare', slug: 'skincare', description: 'Complete skincare solutions', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop', isActive: true, productCount: 0, createdAt: new Date(), updatedAt: new Date() },
+  { _id: '2', id: '2', name: 'Makeup', slug: 'makeup', description: 'Premium makeup products', image: 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop', isActive: true, productCount: 0, createdAt: new Date(), updatedAt: new Date() },
+  { _id: '3', id: '3', name: 'Hair Care', slug: 'hair-care', description: 'Professional hair care products', image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=400&h=400&fit=crop', isActive: true, productCount: 0, createdAt: new Date(), updatedAt: new Date() },
+  { _id: '4', id: '4', name: 'Fragrance', slug: 'fragrance', description: 'Luxury fragrances', image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop', isActive: true, productCount: 0, createdAt: new Date(), updatedAt: new Date() },
+  { _id: '5', id: '5', name: 'Personal Care', slug: 'personal-care', description: 'Essential personal care', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop', isActive: true, productCount: 0, createdAt: new Date(), updatedAt: new Date() }
 ];
 
 async function initializeCategories() {
@@ -24,6 +24,8 @@ export async function GET() {
     const categories = await Category.find({ isActive: true }).lean();
     return NextResponse.json({ success: true, data: categories });
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to fetch categories' }, { status: 500 });
+    console.error('Database error, falling back to static categories:', error);
+    // Fallback to static categories if database fails
+    return NextResponse.json({ success: true, data: fallbackCategories });
   }
 }

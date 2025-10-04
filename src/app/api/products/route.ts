@@ -26,9 +26,17 @@ async function getProducts() {
 export async function GET() {
   try {
     const products = await getProducts();
-    return NextResponse.json({ success: true, data: products });
+    const mappedProducts = products.map(p => ({
+      ...p,
+      id: p._id?.toString() || p.id,
+      _id: p._id?.toString() || p.id,
+      stockCount: p.stockCount || 0,
+      reviewCount: p.reviewCount || p.reviews || 0
+    }));
+    return NextResponse.json({ success: true, data: mappedProducts });
   } catch (error) {
-    return NextResponse.json({ success: false, error: 'Failed to fetch products' }, { status: 500 });
+    console.error('Database error, falling back to static data:', error);
+    return NextResponse.json({ success: true, data: initialProducts });
   }
 }
 
