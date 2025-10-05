@@ -4,10 +4,16 @@ declare global {
   var mongoose: any;
 }
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+let MONGODB_URI: string;
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
+function getMongoURI() {
+  if (!MONGODB_URI) {
+    MONGODB_URI = process.env.MONGODB_URI!;
+    if (!MONGODB_URI) {
+      throw new Error('Please define the MONGODB_URI environment variable');
+    }
+  }
+  return MONGODB_URI;
 }
 
 let cached = global.mongoose;
@@ -22,7 +28,7 @@ async function dbConnect() {
   }
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
+    cached.promise = mongoose.connect(getMongoURI(), {
       bufferCommands: false,
     });
   }
