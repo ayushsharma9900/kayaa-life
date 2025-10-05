@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { apiService } from '@/lib/apiService';
 
 
 export default function AdminLoginPage() {
@@ -24,18 +25,16 @@ export default function AdminLoginPage() {
     setError('');
 
     try {
-      const response = await apiService.login(formData.email, formData.password);
-      
-      if (response.success && response.token) {
-        // Store token in localStorage
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('user', JSON.stringify(response.user));
-        
-        // Redirect to admin dashboard
+      // Simple login without backend for now
+      if (formData.email === 'admin@dashtar.com' && formData.password === 'password123') {
+        localStorage.setItem('token', 'demo-token');
+        localStorage.setItem('user', JSON.stringify({ email: formData.email, role: 'admin' }));
         router.push('/admin');
-      } else {
-        setError('Login failed. Please check your credentials.');
+        return;
       }
+      
+      setError('Invalid credentials. Use admin@dashtar.com / password123');
+
     } catch (err: any) {
       setError(err.message || 'Login failed. Please try again.');
     } finally {
