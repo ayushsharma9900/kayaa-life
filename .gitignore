@@ -48,3 +48,4 @@ dist/
 # Backend
 backend/.env
 backend/node_modules/
+.vercel
