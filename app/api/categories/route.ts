@@ -11,25 +11,35 @@ const fallbackCategories = [
 ];
 
 async function initializeCategories() {
-  await dbConnect();
-  const count = await Category.countDocuments();
-  if (count === 0) {
-    await Category.insertMany(fallbackCategories);
+  try {
+    await dbConnect();
+    const count = await Category.countDocuments();
+    if (count === 0) {
+      await Category.insertMany(fallbackCategories);
+    }
+  } catch (error) {
+    console.log('Database not available, using fallback data');
   }
 }
 
 export async function GET() {
   try {
-    await initializeCategories();
-    const categories = await Category.find({}).lean();
-    return NextResponse.json({ success: true, data: categories });
+    if (process.env.MONGODB_URI) {
+      await initializeCategories();
+      const categories = await Category.find({}).lean();
+      return NextResponse.json({ success: true, data: categories });
+    }
   } catch (error) {
-    return NextResponse.json({ success: true, data: fallbackCategories });
+    console.log('Database error, using fallback');
   }
+  return NextResponse.json({ success: true, data: fallbackCategories });
 }
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
+    }
     await dbConnect();
     const data = await request.json();
     const category = await Category.create(data);
@@ -41,6 +51,9 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
+    }
     await dbConnect();
     const data = await request.json();
     const { id, ...updateData } = data;
@@ -56,6 +69,9 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
+    }
     await dbConnect();
     const data = await request.json();
     const category = await Category.findByIdAndDelete(data.id);

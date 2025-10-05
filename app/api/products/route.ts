@@ -5,22 +5,33 @@ import { products as initialProducts } from '@/data/products';
 
 // Initialize database with seed data if it's empty
 async function initializeDatabase() {
-  await dbConnect();
-  const count = await Product.countDocuments();
-  
-  if (count === 0) {
-    await Product.insertMany(initialProducts.map((p, index) => ({
-      ...p,
-      _id: undefined
-    })));
+  try {
+    await dbConnect();
+    const count = await Product.countDocuments();
+    
+    if (count === 0) {
+      await Product.insertMany(initialProducts.map((p, index) => ({
+        ...p,
+        _id: undefined
+      })));
+    }
+  } catch (error) {
+    console.log('Database not available, using fallback data');
   }
 }
 
 // Get products from MongoDB
 async function getProducts() {
-  await dbConnect();
-  await initializeDatabase();
-  return await Product.find({}).lean();
+  try {
+    if (process.env.MONGODB_URI) {
+      await dbConnect();
+      await initializeDatabase();
+      return await Product.find({}).lean();
+    }
+  } catch (error) {
+    console.log('Database error, using fallback');
+  }
+  return initialProducts;
 }
 
 export async function GET() {
@@ -42,6 +53,9 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
+    }
     await dbConnect();
     const data = await request.json();
     const product = await Product.create(data);
@@ -53,6 +67,9 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
+    }
     await dbConnect();
     const data = await request.json();
     const { _id, ...updateData } = data;
@@ -68,6 +85,9 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    if (!process.env.MONGODB_URI) {
+      return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
+    }
     await dbConnect();
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
