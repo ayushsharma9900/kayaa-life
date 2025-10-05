@@ -21,11 +21,49 @@ async function initializeCategories() {
 export async function GET() {
   try {
     await initializeCategories();
-    const categories = await Category.find({ isActive: true }).lean();
+    const categories = await Category.find({}).lean();
     return NextResponse.json({ success: true, data: categories });
   } catch (error) {
-    console.error('Database error, falling back to static categories:', error);
-    // Fallback to static categories if database fails
     return NextResponse.json({ success: true, data: fallbackCategories });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    await dbConnect();
+    const data = await request.json();
+    const category = await Category.create(data);
+    return NextResponse.json({ success: true, data: category }, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: 'Failed to create category' }, { status: 500 });
+  }
+}
+
+export async function PUT(request: NextRequest) {
+  try {
+    await dbConnect();
+    const data = await request.json();
+    const { id, ...updateData } = data;
+    const category = await Category.findByIdAndUpdate(id, updateData, { new: true });
+    if (!category) {
+      return NextResponse.json({ success: false, error: 'Category not found' }, { status: 404 });
+    }
+    return NextResponse.json({ success: true, data: category });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: 'Failed to update category' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    await dbConnect();
+    const data = await request.json();
+    const category = await Category.findByIdAndDelete(data.id);
+    if (!category) {
+      return NextResponse.json({ success: false, error: 'Category not found' }, { status: 404 });
+    }
+    return NextResponse.json({ success: true, data: category });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: 'Failed to delete category' }, { status: 500 });
   }
 }
