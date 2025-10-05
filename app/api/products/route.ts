@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongodb';
-import Product from '@/lib/models/Product';
 import { products as initialProducts } from '@/data/products';
 
 // Initialize database with seed data if it's empty
 async function initializeDatabase() {
   try {
+    if (!process.env.MONGODB_URI) return;
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Product } = await import('@/lib/models/Product');
     await dbConnect();
     const count = await Product.countDocuments();
     
@@ -24,6 +25,8 @@ async function initializeDatabase() {
 async function getProducts() {
   try {
     if (process.env.MONGODB_URI) {
+      const { default: dbConnect } = await import('@/lib/mongodb');
+      const { default: Product } = await import('@/lib/models/Product');
       await dbConnect();
       await initializeDatabase();
       return await Product.find({}).lean();
@@ -56,6 +59,8 @@ export async function POST(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Product } = await import('@/lib/models/Product');
     await dbConnect();
     const data = await request.json();
     const product = await Product.create(data);
@@ -70,6 +75,8 @@ export async function PUT(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Product } = await import('@/lib/models/Product');
     await dbConnect();
     const data = await request.json();
     const { _id, ...updateData } = data;
@@ -88,6 +95,8 @@ export async function DELETE(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Product } = await import('@/lib/models/Product');
     await dbConnect();
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');

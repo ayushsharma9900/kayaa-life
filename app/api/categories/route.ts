@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import dbConnect from '@/lib/mongodb';
-import Category from '@/lib/models/Category';
 
 const fallbackCategories = [
   { _id: '1', id: '1', name: 'Skincare', slug: 'skincare', description: 'Complete skincare solutions', image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=400&fit=crop', isActive: true, productCount: 0, createdAt: new Date(), updatedAt: new Date() },
@@ -12,6 +10,9 @@ const fallbackCategories = [
 
 async function initializeCategories() {
   try {
+    if (!process.env.MONGODB_URI) return;
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Category } = await import('@/lib/models/Category');
     await dbConnect();
     const count = await Category.countDocuments();
     if (count === 0) {
@@ -25,6 +26,8 @@ async function initializeCategories() {
 export async function GET() {
   try {
     if (process.env.MONGODB_URI) {
+      const { default: dbConnect } = await import('@/lib/mongodb');
+      const { default: Category } = await import('@/lib/models/Category');
       await initializeCategories();
       const categories = await Category.find({}).lean();
       return NextResponse.json({ success: true, data: categories });
@@ -40,6 +43,8 @@ export async function POST(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Category } = await import('@/lib/models/Category');
     await dbConnect();
     const data = await request.json();
     const category = await Category.create(data);
@@ -54,6 +59,8 @@ export async function PUT(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Category } = await import('@/lib/models/Category');
     await dbConnect();
     const data = await request.json();
     const { id, ...updateData } = data;
@@ -72,6 +79,8 @@ export async function DELETE(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    const { default: dbConnect } = await import('@/lib/mongodb');
+    const { default: Category } = await import('@/lib/models/Category');
     await dbConnect();
     const data = await request.json();
     const category = await Category.findByIdAndDelete(data.id);
