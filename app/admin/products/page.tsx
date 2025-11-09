@@ -96,9 +96,14 @@ export default function ProductsPage() {
       await saveProduct(product);
       setSelectedProduct(null);
       setShowProductModal(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to save product:', error);
-      alert('Failed to save product. Please try again.');
+      const errorMessage = error?.message || 'Failed to save product. Please try again.';
+      if (errorMessage.includes('Database not configured')) {
+        alert('⚠️ Database not configured!\n\nYour changes are saved locally but will be lost on page refresh.\n\nPlease configure MONGODB_URI in Vercel environment variables.');
+      } else {
+        alert(`Failed to save product: ${errorMessage}`);
+      }
     } finally {
       setIsSubmitting(false);
     }

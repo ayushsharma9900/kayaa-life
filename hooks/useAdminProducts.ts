@@ -83,8 +83,19 @@ export function useAdminProducts() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...updatedProduct, _id: productId, id: productId })
       });
-      if (!response.ok) throw new Error('Failed to update product');
+      
       const result = await response.json();
+      
+      // Check for database not configured error
+      if (response.status === 503) {
+        setError('Database not configured - changes will not persist after page refresh');
+        throw new Error('Database not configured');
+      }
+      
+      if (!response.ok) {
+        console.error('Update failed:', response.status, result);
+        throw new Error(result.error || 'Failed to update product');
+      }
       
       if (result.success && result.data) {
         const mappedProduct = {
@@ -110,7 +121,7 @@ export function useAdminProducts() {
           product.id === updatedProduct.id ? updated : product
         )
       );
-      return updated;
+      throw err; // Re-throw to show error to user
     }
   };
 
