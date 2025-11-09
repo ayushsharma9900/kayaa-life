@@ -79,13 +79,24 @@ export async function PUT(request: NextRequest) {
     const { default: Product } = await import('@/lib/models/Product');
     await dbConnect();
     const data = await request.json();
-    const { _id, ...updateData } = data;
-    const product = await Product.findByIdAndUpdate(_id, updateData, { new: true });
+    console.log('PUT request received with data:', { id: data._id || data.id, name: data.name });
+    
+    const { _id, id, createdAt, updatedAt, ...updateData } = data;
+    const productId = _id || id;
+    
+    if (!productId) {
+      return NextResponse.json({ success: false, error: 'Product ID is required' }, { status: 400 });
+    }
+    
+    const product = await Product.findByIdAndUpdate(productId, updateData, { new: true, runValidators: true });
     if (!product) {
+      console.error('Product not found with ID:', productId);
       return NextResponse.json({ success: false, error: 'Product not found' }, { status: 404 });
     }
+    console.log('Product updated successfully:', product.name);
     return NextResponse.json({ success: true, data: product });
   } catch (error) {
+    console.error('Update product error:', error);
     return NextResponse.json({ success: false, error: 'Failed to update product' }, { status: 500 });
   }
 }
