@@ -59,13 +59,33 @@ export async function POST(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    
+    // Check if MONGODB_URI is localhost (won't work on Vercel)
+    if (process.env.MONGODB_URI.includes('localhost') || process.env.MONGODB_URI.includes('127.0.0.1')) {
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Database configured with localhost. Please use MongoDB Atlas for production.' 
+      }, { status: 503 });
+    }
+    
     const { default: dbConnect } = await import('@/lib/mongodb');
     const { default: Product } = await import('@/lib/models/Product');
-    await dbConnect();
+    
+    try {
+      await dbConnect();
+    } catch (dbError) {
+      console.error('Database connection failed:', dbError);
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Failed to connect to database. Please check MongoDB configuration.' 
+      }, { status: 503 });
+    }
+    
     const data = await request.json();
     const product = await Product.create(data);
     return NextResponse.json({ success: true, data: product }, { status: 201 });
   } catch (error) {
+    console.error('Create product error:', error);
     return NextResponse.json({ success: false, error: 'Failed to create product' }, { status: 500 });
   }
 }
@@ -75,9 +95,28 @@ export async function PUT(request: NextRequest) {
     if (!process.env.MONGODB_URI) {
       return NextResponse.json({ success: false, error: 'Database not configured' }, { status: 503 });
     }
+    
+    // Check if MONGODB_URI is localhost (won't work on Vercel)
+    if (process.env.MONGODB_URI.includes('localhost') || process.env.MONGODB_URI.includes('127.0.0.1')) {
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Database configured with localhost. Please use MongoDB Atlas for production.' 
+      }, { status: 503 });
+    }
+    
     const { default: dbConnect } = await import('@/lib/mongodb');
     const { default: Product } = await import('@/lib/models/Product');
-    await dbConnect();
+    
+    try {
+      await dbConnect();
+    } catch (dbError) {
+      console.error('Database connection failed:', dbError);
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Failed to connect to database. Please check MongoDB configuration.' 
+      }, { status: 503 });
+    }
+    
     const data = await request.json();
     console.log('PUT request received with data:', { id: data._id || data.id, name: data.name });
     

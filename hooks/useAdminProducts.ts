@@ -84,6 +84,14 @@ export function useAdminProducts() {
         body: JSON.stringify({ ...updatedProduct, _id: productId, id: productId })
       });
       
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        console.error('Non-JSON response:', text);
+        throw new Error('Server returned an invalid response. Check if the API is running correctly.');
+      }
+      
       const result = await response.json();
       
       // Check for database not configured error
@@ -112,7 +120,7 @@ export function useAdminProducts() {
       } else {
         throw new Error('Failed to update product');
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Failed to update product:', err);
       // Fallback to local state update
       const updated = { ...updatedProduct, updatedAt: new Date() };
