@@ -76,21 +76,27 @@ export function useAdminProducts() {
   // Update an existing product
   const updateProduct = async (updatedProduct: Product) => {
     try {
+      // Ensure we use the correct MongoDB _id
+      const productId = updatedProduct._id || updatedProduct.id;
       const response = await fetch('/api/products', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ _id: updatedProduct.id, ...updatedProduct })
+        body: JSON.stringify({ ...updatedProduct, _id: productId, id: productId })
       });
       if (!response.ok) throw new Error('Failed to update product');
       const result = await response.json();
       
       if (result.success && result.data) {
-        const mappedProduct = result.data;
+        const mappedProduct = {
+          ...result.data,
+          id: result.data._id || result.data.id
+        };
         setProducts(prev => 
           prev.map(product => 
-            product.id === updatedProduct.id ? mappedProduct : product
+            (product.id === updatedProduct.id || product._id === updatedProduct._id) ? mappedProduct : product
           )
         );
+        await fetchProducts(); // Refresh to ensure consistency
         return mappedProduct;
       } else {
         throw new Error('Failed to update product');
